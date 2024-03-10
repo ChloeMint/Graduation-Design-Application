@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">GreenPlant</string>
-    <string name="version">Copyright@2024 meaning</string>
+    <string name="version">Copyright@ %1$d meaning</string>
 </resources>
