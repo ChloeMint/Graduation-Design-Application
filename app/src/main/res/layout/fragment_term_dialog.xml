@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".component.welcome.TermDialogFragment"
+    android:orientation="vertical"
+    android:padding="@dimen/dialog_padding">
+    <TextView
+        android:text="@string/service_title"
+        android:textSize="@dimen/text_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="?attr/colorOnSurface"
+        android:textStyle="bold"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="@dimen/dialog_margin">
+
+        <TextView
+            android:id="@+id/serviceContent"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/service_content"
+            android:textSize="@dimen/text_medium" />
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/agree"
+        android:text="@string/agree"
+        android:layout_marginTop="@dimen/dialog_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cornerRadius="@dimen/d27_5"/>
+    <Button
+        android:id="@+id/disagree"
+        android:text="@string/disagree"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dialog_margin"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/gray"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
