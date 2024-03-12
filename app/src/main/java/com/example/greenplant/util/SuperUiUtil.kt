@@ -6,6 +6,8 @@ import android.text.method.LinkMovementMethod
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 
 object SuperUiUtil {
     fun isDark(context: Context):Boolean{
@@ -43,5 +45,9 @@ object SuperUiUtil {
     fun setLinkColor(view: TextView, color: Int){
         view.movementMethod = LinkMovementMethod.getInstance()
         view.setLinkTextColor(color)
+    }
+
+    fun newToast(context: Context, msg: String){
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 }

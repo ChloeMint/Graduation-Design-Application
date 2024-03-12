@@ -16,4 +16,10 @@ object DefaultPreferencesUtil {
     fun isServiceAgree():Boolean{
         return defaultPreferences.getBoolean("serviceAgree", false)
     }
+
+    fun saveToken(token:String){
+        defaultPreferences.edit{
+            putString("token", token)
+        }
+    }
 }
