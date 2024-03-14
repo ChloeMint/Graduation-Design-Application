@@ -4,6 +4,7 @@ package com.example.greenplant.component.guide
 import com.example.greenplant.R
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.component.login.LoginActivity
+import com.example.greenplant.component.register.RegisterActivity
 import com.example.greenplant.databinding.ActivityGuideBinding
 
 class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
@@ -34,6 +35,9 @@ class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
         super.initListener()
         binding.login.setOnClickListener {
             startTheActivity(LoginActivity::class.java)
+        }
+        binding.register.setOnClickListener {
+            startTheActivity(RegisterActivity::class.java)
         }
     }
 

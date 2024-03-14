@@ -9,6 +9,7 @@ object ServiceCreator {
     private const val BASE_URL = "http://192.168.1.148:5000"
     private var okHttpClient = OkHttpClient.Builder()
         .connectTimeout(5,TimeUnit.SECONDS)
+        .addInterceptor(AuthorizationInterceptor())
         .build()
 
     private val retrofit = Retrofit.Builder()

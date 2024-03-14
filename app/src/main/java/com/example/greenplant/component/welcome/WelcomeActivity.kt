@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
+import com.example.greenplant.MainActivity
 import com.example.greenplant.R
 import com.example.greenplant.activity.BaseLogicActivity
 import com.example.greenplant.activity.BaseViewModelActivity
@@ -44,6 +45,10 @@ class WelcomeActivity : BaseViewModelActivity<ActivityWelcomeBinding>() {
     }
 
     private fun prepareToNext(){
-        startActivityAfterFinishIt(GuideActivity::class.java)
+        if (DefaultPreferencesUtil.getToken() != ""){
+            isTokenExpired()
+        }else{
+            startActivityAfterFinishIt(GuideActivity::class.java)
+        }
     }
 }

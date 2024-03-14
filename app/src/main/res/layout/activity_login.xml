@@ -74,7 +74,27 @@
             android:text="@string/login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/d50"/>
-    </LinearLayout>
 
+        <!--  忘记密码，跳转到注册  -->
+        <LinearLayout
+            android:layout_marginTop="@dimen/d10"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/forgetPassword"
+                android:text="@string/forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="right"
+                android:id="@+id/toRegister"
+                android:text="@string/to_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </RelativeLayout>

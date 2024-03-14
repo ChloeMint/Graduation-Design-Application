@@ -49,9 +49,18 @@
     <string name="disagree">不同意并退出应用</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
+    <string name="commit">提交</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="login_for_phone">请输入手机号:</string>
     <string name="login_for_password">请输入密码:</string>
+    <string name="register_for_password">请输入该账号设置的密码:</string>
+    <string name="forget_for_new_password">请输入新密码:</string>
+    <string name="register_for_username">请输入用户名:</string>
     <string name="welcome_login">欢迎登录绿植</string>
     <string name="welcome_register">欢迎注册绿植</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="to_register">还没有账号，点此注册</string>
+    <string name="back_to_login">返回登录</string>
+    <string name="code">请输入验证码:</string>
+    <string name="get_code">获取验证码</string>
 </resources>

@@ -22,4 +22,8 @@ object DefaultPreferencesUtil {
             putString("token", token)
         }
     }
+
+    fun getToken(): String {
+        return defaultPreferences.getString("token", "")!!
+    }
 }

@@ -1,19 +1,26 @@
 package com.example.greenplant
 
-import com.example.greenplant.network.LoginService
+import com.example.greenplant.network.UserService
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.await
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 object GreenPlantNetwork {
-    private val loginService = ServiceCreator.create<LoginService>()
+    private val userService = ServiceCreator.create<UserService>()
 
-    suspend fun login(requestBody: RequestBody) = loginService.login(requestBody).await()
+    suspend fun login(requestBody: RequestBody) = userService.login(requestBody).await()
+
+    suspend fun getUserInfo() = userService.getUserInfo().await()
+
+    suspend fun sendMessage(requestBody: RequestBody) = userService.sendMessage(requestBody).await()
+
+    suspend fun forgetPassword(requestBody: RequestBody) = userService.forgetPassword(requestBody).await()
+
+    suspend fun register(requestBody: RequestBody) = userService.register(requestBody).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
