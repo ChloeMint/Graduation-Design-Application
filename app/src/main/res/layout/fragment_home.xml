@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".component.home.HomeFragment">
+
+    <!--  topBar  -->
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:background="@drawable/plant"
+        android:layout_height="285dp">
+
+        <LinearLayout
+            android:padding="@dimen/content_padding"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="@string/logo_title"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-thin"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:background="@drawable/input_title"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:text="@string/find_nature_beautify"
+                android:layout_marginLeft="@dimen/dialog_margin"
+                android:layout_width="match_parent"
+                android:alpha="0.8"
+                android:layout_height="20sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/discover_every_greener"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/content_padding"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif-thin"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <!--  中间部分  -->
+    <LinearLayout
+        android:layout_marginTop="@dimen/dialog_margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:padding="@dimen/content_padding"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="96dp"
+            android:layout_height="96dp">
+            <ImageView
+                android:src="@drawable/camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@string/get_to_know_plant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="96dp"
+            android:layout_height="96dp">
+            <ImageView
+                android:src="@drawable/docker"
+                android:layout_width="69dp"
+                android:layout_height="69dp"/>
+            <TextView
+                android:text="@string/docker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="96dp"
+            android:layout_height="96dp">
+            <ImageView
+                android:src="@drawable/paint"
+                android:layout_width="69dp"
+                android:layout_height="69dp"/>
+            <TextView
+                android:text="@string/AI_paint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--  百科  -->
+    <RelativeLayout
+        android:padding="@dimen/content_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="20sp"
+            android:text="@string/plant_baike"
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:id="@+id/change_plant"
+            android:gravity="center"
+            android:background="@drawable/change_plant_button"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:layout_width="77dp"
+            android:layout_height="28dp">
+            <ImageView
+                android:src="@drawable/change_plant"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <TextView
+                android:layout_alignParentRight="true"
+                android:text="@string/change_plant"
+                android:layout_width="wrap_content"
+                android:textColor="@color/gray"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:padding="@dimen/content_padding"
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

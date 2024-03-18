@@ -63,4 +63,16 @@
     <string name="back_to_login">返回登录</string>
     <string name="code">请输入验证码:</string>
     <string name="get_code">获取验证码</string>
+    <string name="home">首页</string>
+    <string name="shequ">社区</string>
+    <string name="weather">天气</string>
+    <string name="me">我的</string>
+    <string name="logo_title">绿植</string>
+    <string name="find_nature_beautify">发现自然之美</string>
+    <string name="discover_every_greener">识别每一片绿意</string>
+    <string name="get_to_know_plant">识别花草</string>
+    <string name="docker">植物医生</string>
+    <string name="AI_paint">AI绘画</string>
+    <string name="plant_baike">植物百科</string>
+    <string name="change_plant">换一换</string>
 </resources>

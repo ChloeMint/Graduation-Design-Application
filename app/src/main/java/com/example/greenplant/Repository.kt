@@ -53,6 +53,15 @@ object Repository {
         }
     }
 
+    fun getBaike(page:Int) = fire(Dispatchers.IO){
+        val baikeResponse = GreenPlantNetwork.getBaike(page)
+        if (baikeResponse.code != 500){
+            Result.success(baikeResponse.data)
+        }else{
+            Result.failure(java.lang.RuntimeException(baikeResponse.msg))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
