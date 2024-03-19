@@ -1,5 +1,6 @@
 package com.example.greenplant.component.home
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
@@ -26,9 +27,25 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
         ViewModelProvider(this)[GetBaikeViewModel::class.java]
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // 放到onViewCreated分开的其他方法中可能无法通过点击事件正常监听，所以放到onCreate的时候是最好的
+        baikeViewModel.baikeResponseLiveData.observe(requireActivity(), Observer {
+            val baikeResponse = it.getOrNull()
+            if (baikeResponse!!.isNotEmpty()) {
+                dataList.clear()
+                dataList.addAll(baikeResponse)
+                adapter.notifyDataSetChanged()
+            }else{
+                // 一个小bug，在到最后一页数据的时候需要点两下才能切换回第一页
+                page = 0
+            }
+        })
+    }
+
     override fun initViews() {
         super.initViews()
-        QMUIStatusBarHelper.setStatusBarDarkMode(requireActivity())
 
         // 设置topBar的背景图片
         val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.plant)
@@ -48,16 +65,14 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
         binding.recycleView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
         adapter = PlantItemAdapter(requireContext(),dataList)
         binding.recycleView.adapter = adapter
-        baikeViewModel.baikeResponseLiveData.observe(this , Observer {
-            val baikeResponse = it.getOrNull()
-            if (baikeResponse != null) {
-                dataList.clear()
-                dataList.addAll(baikeResponse)
-                adapter.notifyDataSetChanged()
-            }
-        })
+    }
 
-
+    override fun initListener() {
+        super.initListener()
+        binding.changePlant.setOnClickListener {
+            page+=1
+            baikeViewModel.setPage(page)
+        }
     }
 
     companion object{
