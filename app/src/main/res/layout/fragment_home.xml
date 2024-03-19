@@ -28,15 +28,28 @@
                 android:textSize="20sp"
                 android:fontFamily="sans-serif-thin"
                 android:layout_height="wrap_content"/>
-            <TextView
-                android:background="@drawable/input_title"
-                android:gravity="center"
-                android:textColor="@color/gray"
-                android:text="@string/find_nature_beautify"
-                android:layout_marginLeft="@dimen/dialog_margin"
+            <LinearLayout
+                android:layout_marginTop="3dp"
                 android:layout_width="match_parent"
+                android:background="@drawable/input_title"
                 android:alpha="0.8"
-                android:layout_height="20sp"/>
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/dialog_margin"
+                android:orientation="horizontal"
+                android:layout_height="25dp">
+                <ImageView
+                    android:layout_marginLeft="-10dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textColor="@color/gray"
+                    android:text="@string/find_nature_beautify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
