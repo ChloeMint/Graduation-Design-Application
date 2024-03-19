@@ -4,12 +4,13 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.greenplant.R
-import com.example.greenplant.Repository
 import com.example.greenplant.databinding.FragmentHomeBinding
 import com.example.greenplant.entities.Baike
 import com.example.greenplant.fragment.BaseViewModelFragment
@@ -55,6 +56,7 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
                 adapter.notifyDataSetChanged()
             }
         })
+
 
     }
 
