@@ -54,6 +54,7 @@ class PlantBaikeItemActivity : BaseViewModelActivity<ActivityPlantBaikeItemBindi
 
     override fun initViews() {
         super.initViews()
+
     }
 
     companion object{
