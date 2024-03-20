@@ -75,4 +75,6 @@
     <string name="AI_paint">AI绘画</string>
     <string name="plant_baike">植物百科</string>
     <string name="change_plant">换一换</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

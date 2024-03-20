@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".component.home.PlantBaikeItemActivity">
+    <!--  关于状态栏的高度，好像只能丢到LinearLayout  -->
+    <LinearLayout
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+         android:layout_height="wrap_content">
+        <include layout="@layout/custom_toolbar" android:id="@+id/custom_toolbar"/>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:alpha="0.8"
+        android:background="@color/light_gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TableLayout
+        android:background="?attr/colorPrimary"
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/gray_text"
+        android:layout_height="@dimen/d52"/>
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="match_parent"
+        android:background="@color/plant_item_background"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+</LinearLayout>

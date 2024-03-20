@@ -26,6 +26,8 @@ object GreenPlantNetwork {
 
     suspend fun getBaike(page:Int) = plantService.getBaike(page).await()
 
+    suspend fun getBaikeDetail(plantId:Int) = plantService.getBaikeDetail(plantId).await()
+
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

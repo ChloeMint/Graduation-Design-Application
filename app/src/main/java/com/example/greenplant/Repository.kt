@@ -62,6 +62,15 @@ object Repository {
         }
     }
 
+    fun getBaikeDetail(plantId:Int) = fire(Dispatchers.IO){
+        val baikeDetailResponse = GreenPlantNetwork.getBaikeDetail(plantId)
+        if (baikeDetailResponse.code != 500){
+            Result.success(baikeDetailResponse.data)
+        }else{
+            Result.failure(java.lang.RuntimeException(baikeDetailResponse.msg))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {

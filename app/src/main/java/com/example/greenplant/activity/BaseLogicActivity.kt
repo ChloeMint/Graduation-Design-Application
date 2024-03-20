@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.MainActivity
 import com.example.greenplant.R
 import com.example.greenplant.component.login.LoginActivity
+import com.example.greenplant.databinding.CustomToolbarBinding
 import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.UserInfoViewModel
@@ -25,6 +26,18 @@ open class BaseLogicActivity : BaseCommonActivity() {
             finish()
         }
     }
+
+    fun setCenterToolBar(customToolbarBinding:CustomToolbarBinding, title: String){
+        setSupportActionBar(customToolbarBinding.toolBar)
+        supportActionBar!!.title = ""
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        customToolbarBinding.toolBar.setNavigationIcon(R.drawable.back)
+        customToolbarBinding.toolBar.setNavigationOnClickListener {
+            finish()
+        }
+        customToolbarBinding.toolBarTitle.text = title
+    }
+
 
     fun isTokenExpired() {
         userInfoViewModel.setIsGettingUserInfo()

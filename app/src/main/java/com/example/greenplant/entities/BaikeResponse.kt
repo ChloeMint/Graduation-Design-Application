@@ -18,3 +18,7 @@ data class Baike(
     @SerializedName("plant_english_name") val plantEnglishName: String,
     @SerializedName("plant_name") val plantName: String
     )
+
+data class BaikeDetailResponse(
+    val data:Baike
+) : BasicResponse()

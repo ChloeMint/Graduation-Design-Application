@@ -143,6 +143,7 @@
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:id="@+id/change_plant"
                 android:gravity="center"
                 android:background="@drawable/change_plant_button"
                 android:layout_centerVertical="true"
@@ -157,7 +158,6 @@
                 <TextView
                     android:layout_alignParentRight="true"
                     android:text="@string/change_plant"
-                    android:id="@+id/change_plant"
                     android:layout_width="wrap_content"
                     android:textColor="@color/gray"
                     android:layout_height="wrap_content"/>
