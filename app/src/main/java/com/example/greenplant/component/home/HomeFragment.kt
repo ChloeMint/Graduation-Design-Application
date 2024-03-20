@@ -44,8 +44,8 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
         })
     }
 
-    override fun initViews() {
-        super.initViews()
+    override fun initView() {
+        super.initView()
 
         // 设置topBar的背景图片
         val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.plant)

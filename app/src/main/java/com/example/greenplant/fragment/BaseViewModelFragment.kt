@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.example.greenplant.util.CreateBindingClassUtil
 
-abstract class BaseViewModelFragment<VB: ViewBinding> : BaseCommonDialogFragment() {
+abstract class BaseViewModelFragment<VB:ViewBinding> : BaseCommonFragment() {
     private var _binding: VB? = null
     val binding get() = _binding!!
 
@@ -16,7 +16,7 @@ abstract class BaseViewModelFragment<VB: ViewBinding> : BaseCommonDialogFragment
         _binding = CreateBindingClassUtil.newViewBinding(layoutInflater,javaClass)
     }
 
-    override fun getLayoutView(
+    override fun getLayout(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,4 +28,11 @@ abstract class BaseViewModelFragment<VB: ViewBinding> : BaseCommonDialogFragment
         super.onDestroyView()
         _binding = null
     }
+
+
+
+
+
+
+
 }
