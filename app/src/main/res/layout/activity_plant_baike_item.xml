@@ -26,10 +26,11 @@
         android:background="?attr/colorPrimary"
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        app:tabTextColor="@color/black"
-        app:tabSelectedTextColor="@color/gray_text"
+        app:tabTextColor="@color/gray_text"
+        app:tabSelectedTextColor="@color/black"
         android:layout_height="@dimen/d52"/>
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
         android:layout_width="match_parent"
         android:background="@color/plant_item_background"
         android:layout_weight="1"

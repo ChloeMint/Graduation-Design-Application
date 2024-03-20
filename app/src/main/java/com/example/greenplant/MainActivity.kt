@@ -1,5 +1,6 @@
 package com.example.greenplant
 
+import android.os.Bundle
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivityMainBinding
@@ -10,15 +11,20 @@ import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
-    override fun initViews() {
-        super.initViews()
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         QMUIStatusBarHelper.translucent(this)
         if (SuperUiUtil.isDark(this)){
             QMUIStatusBarHelper.setStatusBarDarkMode(this)
         }else{
             QMUIStatusBarHelper.setStatusBarLightMode(this)
         }
+    }
+
+    override fun initViews() {
+        super.initViews()
+
+
 
         for (i in tabLayoutTitles.indices){
             ItemTabBinding.inflate(layoutInflater).apply {

@@ -20,28 +20,17 @@ class PlantBaikeItemActivity : BaseViewModelActivity<ActivityPlantBaikeItemBindi
         ViewModelProvider(this)[BaikeDetailViewModel::class.java]
     }
     private var plantId by Delegates.notNull<Int>()
+    private lateinit var adapter:PlantBaikeItemAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        plantId = intent.getIntExtra("plantId", 0)
-
-
         super.onCreate(savedInstanceState)
+        QMUIStatusBarHelper.translucent(this)
+        plantId = intent.getIntExtra("plantId", 0)
         baikeDetailViewModel.baikeDetailResponse.observe(this, Observer {
             val baikeDetailResponse = it.getOrNull()
             if (baikeDetailResponse != null){
-
-//                setSupportActionBar(binding.customToolbar.toolBar)
-//                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-//                supportActionBar!!.title=""
-//                binding.customToolbar.toolBar.setNavigationIcon(R.drawable.back)
-//                binding.customToolbar.toolBar.setNavigationOnClickListener {
-//                    finish()
-//                }
-//                binding.customToolbar.toolBarTitle.text = baikeDetailResponse.plantName
-
                 setCenterToolBar(binding.customToolbar, baikeDetailResponse.plantName)
-
-
             }
         })
     }
@@ -49,7 +38,11 @@ class PlantBaikeItemActivity : BaseViewModelActivity<ActivityPlantBaikeItemBindi
     override fun initDatum() {
         super.initDatum()
         baikeDetailViewModel.setPlantId(plantId)
-        QMUIStatusBarHelper.translucent(this)
+        adapter = PlantBaikeItemAdapter(this, DataUtil.dataList, plantId)
+        binding.viewPager2.adapter = adapter
+        TabLayoutViewPager2Mediator(binding.tabLayout,binding.viewPager2
+        ) { _, _ -> }.attach()
+
     }
 
     override fun initViews() {
