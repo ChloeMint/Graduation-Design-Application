@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GreenPlant"
         tools:targetApi="31">
         <activity
+            android:name=".component.home.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".component.home.PlantBaikeItemActivity"
             android:exported="false" />
         <activity

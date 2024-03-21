@@ -1,6 +1,7 @@
 package com.example.greenplant.component.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
@@ -72,6 +73,11 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
         binding.changePlant.setOnClickListener {
             page+=1
             baikeViewModel.setPage(page)
+        }
+
+        binding.searchBox.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
         }
     }
 

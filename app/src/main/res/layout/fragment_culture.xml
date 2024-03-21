@@ -26,6 +26,7 @@
 
             <TextView
                 android:layout_marginTop="@dimen/dialog_margin"
+                android:lineSpacingMultiplier="1.2"
                 android:text="@string/plant_culture_content"
                 android:textSize="15sp"
                 android:id="@+id/plantCulture"
@@ -50,6 +51,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:lineSpacingMultiplier="1.2"
                 android:layout_marginTop="@dimen/dialog_margin"
                 android:text="@string/legend_content"
                 android:textSize="15sp"

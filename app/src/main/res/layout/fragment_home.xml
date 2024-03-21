@@ -33,6 +33,7 @@
                     android:fontFamily="sans-serif-thin"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
+                    android:id="@+id/searchBox"
                     android:layout_marginTop="3dp"
                     android:layout_width="match_parent"
                     android:background="@drawable/input_title"
