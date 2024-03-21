@@ -33,7 +33,7 @@ class TabLayoutViewPager2Mediator(
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val index = tab?.position
                 if (viewPager.currentItem!=index){
-                    viewPager.setCurrentItem(index!!,false)
+                    viewPager.setCurrentItem(index!!,true)
                 }
             }
 

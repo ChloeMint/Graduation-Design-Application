@@ -38,6 +38,7 @@ class PlantItemAdapter(val context:Context, private val dataList: List<Baike>) :
                 error(R.drawable.load_failed)
             }.into(image)
 
+
             chineseName.text = baike.plantName
             englishName.text = baike.plantEnglishName
         }

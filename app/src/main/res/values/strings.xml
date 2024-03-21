@@ -75,6 +75,22 @@
     <string name="AI_paint">AI绘画</string>
     <string name="plant_baike">植物百科</string>
     <string name="change_plant">换一换</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="in_short">简要介绍</string>
+    <string name="care_knowledge">养护知识</string>
+    <string name="area">分布地区</string>
+    <string name="plant_culture">植物文化</string>
+    <string name="legend">传说故事</string>
+    <string name="legend_content">传说中紫罗兰花是“爱情花”，据希腊神话传说故事，管理人们爱与美丽的女神维纳斯，因恋人出远门，依依不舍，晶莹剔透的泪水滴到土壤上，第二年春季居然生出枝芽，结出了一朵朵美丽的花朵来，这就是紫罗兰。
+</string>
+    <string name="plant_culture_content">紫罗兰在古希腊是富饶多产的象征，雅典以它作为徽章旗帜上的标记， [10]是美国罗得岛州的州花， [11]花语是“永恒的美与爱”。 [12]
+紫罗兰的花语：永恒的美与爱；质朴，美德，盛夏的清凉。
+紫罗兰（蓝色）：警戒，忠诚，我将永远忠诚。
+紫罗兰（白色）：让我们抓住幸福的机会吧。
+紫罗兰（紫色）：在梦境中爱上你，对我而言你永远那么美。
+同时，紫罗兰也是金牛座的幸运花。 [5]
+紫罗兰象征：高雅、诚实。 [6]</string>
+    <string name="area_content">本属约50种，中国有1种。 [17]原产欧洲南部及地中海沿岸。中国南方大城市中常有引种，北方栽于庭园花坛或温室中。</string>
+    <string name="care_knowledge_content">1、土壤：最好用松软、透气、肥沃的土壤。2、光照：平时多晒散光，夏季光照强，必须遮挡处理。3、浇水：生长季勤浇水，保湿在60%-80%之间。4、施肥：生长季间勤追施稀释的复合肥液，确保营养足才可更好的开花。5、温度：养护在15-25℃的环境下，夏冬季适当控温。6、注意事项：它有毒，注意摆放位置。</string>
+    <string name="introduction">紫罗兰（Matthiola incana (L.) R. Br.）是十字花科、紫罗兰属二年生或多年生草本植物，其植株高60厘米，布满灰白色的分枝柔毛；茎直立，多分枝；叶片为长圆形至倒披针形或匙形；总状花序顶生和腋生，花多数，较大，花序轴果期伸长，花瓣为类似卵形的紫红、淡红或白色， [7]花朵具有芳香、艳丽，花色丰富； [8]种子为深褐色扁平近圆形状，直径约2毫米；花期4-5月</string>
+
 </resources>

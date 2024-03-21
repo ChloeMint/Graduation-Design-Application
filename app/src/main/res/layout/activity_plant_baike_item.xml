@@ -17,7 +17,7 @@
     </LinearLayout>
 
     <View
-        android:alpha="0.8"
+        android:alpha="0.5"
         android:background="@color/light_gray"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
@@ -25,6 +25,10 @@
     <com.google.android.material.tabs.TabLayout
         android:background="?attr/colorPrimary"
         android:id="@+id/tabLayout"
+        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorHeight="@dimen/d3"
+        app:tabIndicatorGravity="bottom"
+        app:tabIndicatorFullWidth="false"
         android:layout_width="match_parent"
         app:tabTextColor="@color/gray_text"
         app:tabSelectedTextColor="@color/black"
