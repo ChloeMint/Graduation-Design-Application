@@ -27,7 +27,8 @@
                 android:src="@drawable/search"
                 android:layout_width="25dp"
                 android:layout_height="25dp"/>
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/editView"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/d3"
                 android:textSize="@dimen/text_medium"
@@ -35,6 +36,8 @@
                 android:background="@null"
                 android:layout_height="25dp"/>
             <ImageView
+                android:id="@+id/cancelImage"
+                android:visibility="invisible"
                 android:alpha="0.8"
                 android:src="@drawable/quxiao"
                 android:layout_width="25dp"
@@ -46,7 +49,7 @@
             android:layout_marginStart="@dimen/baike_linearlayout_margin"
             android:id="@+id/cancel"
             android:textStyle="bold"
-            android:textColor="@color/gray_text"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

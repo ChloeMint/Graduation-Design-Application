@@ -13,4 +13,7 @@ interface PlantService {
 
     @GET("/baike/{plantId}")
     fun getBaikeDetail(@Path("plantId") plantId:Int):Call<BaikeDetailResponse>
+
+    @GET("/baike/{plantName}")
+    fun getBaikeSearch(@Path("plantName") plantName:String):Call<BaikeResponse>
 }

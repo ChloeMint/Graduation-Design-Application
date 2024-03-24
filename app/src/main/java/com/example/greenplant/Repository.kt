@@ -71,6 +71,15 @@ object Repository {
         }
     }
 
+    fun getBaikeSearch(plantName:String) = fire(Dispatchers.IO){
+        val baikeSearchResponse = GreenPlantNetwork.getBaikeSearch(plantName)
+        if (baikeSearchResponse.code != 500){
+            Result.success(baikeSearchResponse.data)
+        }else{
+            Result.failure(java.lang.RuntimeException(baikeSearchResponse.msg))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {

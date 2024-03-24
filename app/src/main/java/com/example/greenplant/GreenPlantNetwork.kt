@@ -28,6 +28,8 @@ object GreenPlantNetwork {
 
     suspend fun getBaikeDetail(plantId:Int) = plantService.getBaikeDetail(plantId).await()
 
+    suspend fun getBaikeSearch(plantName: String) = plantService.getBaikeSearch(plantName).await()
+
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

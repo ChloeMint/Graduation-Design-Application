@@ -10,7 +10,32 @@
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/search_toolbar"/>
-
+        <include layout="@layout/search_toolbar" android:id="@+id/includeSearchToolBarView"/>
     </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+<!--        <ImageView-->
+<!--            android:layout_marginTop="130dp"-->
+<!--            android:id="@+id/noMessageImage"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:src="@drawable/no_message"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <TextView-->
+<!--            android:id="@+id/noMessageText"-->
+<!--            android:textSize="@dimen/text_medium"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_below="@id/noMessageImage"-->
+<!--            android:text="@string/no_message"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+    </RelativeLayout>
 </LinearLayout>
