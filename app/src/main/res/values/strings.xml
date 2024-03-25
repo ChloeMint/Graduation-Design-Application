@@ -81,6 +81,7 @@
     <string name="plant_culture">植物文化</string>
     <string name="legend">传说故事</string>
     <string name="cancel">取消</string>
+    <string name="back">返回</string>
     <string name="legend_content">传说中紫罗兰花是“爱情花”，据希腊神话传说故事，管理人们爱与美丽的女神维纳斯，因恋人出远门，依依不舍，晶莹剔透的泪水滴到土壤上，第二年春季居然生出枝芽，结出了一朵朵美丽的花朵来，这就是紫罗兰。
 </string>
     <string name="plant_culture_content">紫罗兰在古希腊是富饶多产的象征，雅典以它作为徽章旗帜上的标记， [10]是美国罗得岛州的州花， [11]花语是“永恒的美与爱”。 [12]
@@ -94,6 +95,7 @@
     <string name="care_knowledge_content">1、土壤：最好用松软、透气、肥沃的土壤。2、光照：平时多晒散光，夏季光照强，必须遮挡处理。3、浇水：生长季勤浇水，保湿在60%-80%之间。4、施肥：生长季间勤追施稀释的复合肥液，确保营养足才可更好的开花。5、温度：养护在15-25℃的环境下，夏冬季适当控温。6、注意事项：它有毒，注意摆放位置。</string>
     <string name="introduction">紫罗兰（Matthiola incana (L.) R. Br.）是十字花科、紫罗兰属二年生或多年生草本植物，其植株高60厘米，布满灰白色的分枝柔毛；茎直立，多分枝；叶片为长圆形至倒披针形或匙形；总状花序顶生和腋生，花多数，较大，花序轴果期伸长，花瓣为类似卵形的紫红、淡红或白色， [7]花朵具有芳香、艳丽，花色丰富； [8]种子为深褐色扁平近圆形状，直径约2毫米；花期4-5月</string>
 
-    <string name="no_message">还没有该种植物的信息哦</string>
+    <string name="no_message">还没有该种植物的信息哦
+    </string>
 
 </resources>

@@ -76,6 +76,7 @@
             android:padding="@dimen/content_padding"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:id="@+id/plantRecognition"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="96dp"
@@ -150,7 +151,7 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:orientation="horizontal"
-                android:layout_width="77dp"
+                android:layout_width="80dp"
                 android:layout_height="28dp">
                 <ImageView
                     android:src="@drawable/change_plant"

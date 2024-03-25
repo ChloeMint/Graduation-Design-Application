@@ -79,6 +79,11 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
             val intent = Intent(requireContext(), SearchActivity::class.java)
             startActivity(intent)
         }
+
+        binding.plantRecognition.setOnClickListener {
+            val intent = Intent(requireContext(), PlantRecognitionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object{

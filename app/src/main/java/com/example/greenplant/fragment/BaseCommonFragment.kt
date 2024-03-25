@@ -1,5 +1,6 @@
 package com.example.greenplant.fragment
 
+import android.content.Intent
 import android.view.View
 import androidx.annotation.IdRes
 

@@ -31,18 +31,19 @@ class SearchActivity : BaseViewModelActivity<ActivitySearchBinding>() {
         baikeSearchViewModel.plantSearchResponseLiveData.observe(this, Observer {
             val baikeResponse = it.getOrNull()
             if (baikeResponse != null) {
+//                Log.d(TAG, "onCreate: $baikeResponse")
                 baikeList.clear()
                 if (baikeResponse.isNotEmpty()){
                     baikeList.addAll(baikeResponse)
-//                    binding.noMessageImage.visibility = View.INVISIBLE
-//                    binding.noMessageText.visibility = View.INVISIBLE
-                    binding.searchRecycleView.visibility = View.VISIBLE
-                }else{
-//                    binding.noMessageImage.visibility = View.VISIBLE
-//                    binding.noMessageText.visibility = View.VISIBLE
+                    binding.noMessageImage.visibility = View.INVISIBLE
+                    binding.noMessageText.visibility = View.INVISIBLE
                     binding.searchRecycleView.visibility = View.VISIBLE
                 }
                 adapter.notifyDataSetChanged()
+            }else{
+                    binding.noMessageImage.visibility = View.VISIBLE
+                    binding.noMessageText.visibility = View.VISIBLE
+                binding.searchRecycleView.visibility = View.INVISIBLE
             }
         })
 
@@ -63,9 +64,9 @@ class SearchActivity : BaseViewModelActivity<ActivitySearchBinding>() {
                 baikeSearchViewModel.setPlantName(text.toString())
             }else{
                 binding.includeSearchToolBarView.cancelImage.visibility = View.INVISIBLE
-//                binding.noMessageImage.visibility = View.VISIBLE
-//                binding.noMessageText.visibility = View.VISIBLE
-                binding.searchRecycleView.visibility = View.VISIBLE
+                binding.noMessageImage.visibility = View.VISIBLE
+                binding.noMessageText.visibility = View.VISIBLE
+                binding.searchRecycleView.visibility = View.INVISIBLE
             }
         }
 
@@ -76,9 +77,12 @@ class SearchActivity : BaseViewModelActivity<ActivitySearchBinding>() {
         binding.includeSearchToolBarView.cancelImage.setOnClickListener {
             binding.includeSearchToolBarView.editView.setText("")
             binding.includeSearchToolBarView.cancelImage.visibility = View.INVISIBLE
-//            binding.noMessageImage.visibility = View.VISIBLE
-            binding.searchRecycleView.visibility = View.VISIBLE
-//            binding.noMessageText.visibility = View.VISIBLE
+            binding.noMessageImage.visibility = View.VISIBLE
+            binding.searchRecycleView.visibility = View.INVISIBLE
+            binding.noMessageText.visibility = View.VISIBLE
         }
+    }
+    companion object{
+        const val TAG = "SearchActivity"
     }
 }
