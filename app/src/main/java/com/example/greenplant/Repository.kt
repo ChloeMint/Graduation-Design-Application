@@ -93,6 +93,7 @@ object Repository {
 
     fun getBaiduRecognition(accessToken:String, image:String) = fire(Dispatchers.IO){
         val baiduPlantRecognitionResponse = GreenPlantNetwork.getBaiduRecognition(accessToken, image)
+        Log.d("Repository", "$baiduPlantRecognitionResponse")
         Result.success(baiduPlantRecognitionResponse.result)
     }
 
