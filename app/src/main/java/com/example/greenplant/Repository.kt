@@ -2,8 +2,10 @@ package com.example.greenplant
 
 import android.util.Log
 import androidx.lifecycle.liveData
+import com.example.greenplant.util.DefaultPreferencesUtil
 import kotlinx.coroutines.Dispatchers
 import okhttp3.RequestBody
+import org.w3c.dom.Text
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
@@ -87,6 +89,11 @@ object Repository {
         }else{
             Result.failure(java.lang.RuntimeException("token get failed"))
         }
+    }
+
+    fun getBaiduRecognition(accessToken:String, image:String) = fire(Dispatchers.IO){
+        val baiduPlantRecognitionResponse = GreenPlantNetwork.getBaiduRecognition(accessToken, image)
+        Result.success(baiduPlantRecognitionResponse.result)
     }
 
 

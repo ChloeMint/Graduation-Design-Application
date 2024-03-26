@@ -4,6 +4,7 @@ import com.example.greenplant.network.BaiduService
 import com.example.greenplant.network.PlantService
 import com.example.greenplant.network.UserService
 import okhttp3.RequestBody
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +34,8 @@ object GreenPlantNetwork {
     suspend fun getBaikeSearch(plantName: String) = plantService.getBaikeSearch(plantName).await()
 
     suspend fun getBaiduToken() = baiduService.getBaiduToken().await()
+
+    suspend fun getBaiduRecognition(accessToken:String, image:String) = baiduService.getBaiduPlantRecognition(accessToken, image).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
