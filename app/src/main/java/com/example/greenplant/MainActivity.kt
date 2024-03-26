@@ -1,15 +1,22 @@
 package com.example.greenplant
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivityMainBinding
 import com.example.greenplant.databinding.ItemTabBinding
 import com.example.greenplant.main.MainAdapter
+import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.BaiduTokenViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
+    private val baiduTokenViewModel by lazy {
+        ViewModelProvider(this)[BaiduTokenViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +26,14 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         }else{
             QMUIStatusBarHelper.setStatusBarLightMode(this)
         }
+
+        baiduTokenViewModel.baiDuPlatformTokenResponse.observe(this, Observer {
+            val baiDuPlatformTokenResponse = it.getOrNull()
+            if (baiDuPlatformTokenResponse != null){
+                DefaultPreferencesUtil.saveBaiduToken(baiDuPlatformTokenResponse.access_token)
+                DefaultPreferencesUtil.saveBaiduExpiresTime(System.currentTimeMillis() + (baiDuPlatformTokenResponse.expires_in*1000))
+            }
+        })
     }
 
     override fun initViews() {
@@ -45,7 +60,9 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
 
     override fun initDatum() {
         super.initDatum()
-
+        if (DefaultPreferencesUtil.getBaiduToken() == "" || System.currentTimeMillis() >= DefaultPreferencesUtil.getBaiduExpiresTime()){
+            baiduTokenViewModel.setStart(1)
+        }
 
     }
 

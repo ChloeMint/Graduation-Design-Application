@@ -1,5 +1,6 @@
 package com.example.greenplant
 
+import com.example.greenplant.network.BaiduService
 import com.example.greenplant.network.PlantService
 import com.example.greenplant.network.UserService
 import okhttp3.RequestBody
@@ -13,6 +14,7 @@ import kotlin.coroutines.suspendCoroutine
 object GreenPlantNetwork {
     private val userService = ServiceCreator.create<UserService>()
     private val plantService = ServiceCreator.create<PlantService>()
+    private val baiduService = ServiceCreator.create<BaiduService>()
 
     suspend fun login(requestBody: RequestBody) = userService.login(requestBody).await()
 
@@ -29,6 +31,8 @@ object GreenPlantNetwork {
     suspend fun getBaikeDetail(plantId:Int) = plantService.getBaikeDetail(plantId).await()
 
     suspend fun getBaikeSearch(plantName: String) = plantService.getBaikeSearch(plantName).await()
+
+    suspend fun getBaiduToken() = baiduService.getBaiduToken().await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {

@@ -80,6 +80,15 @@ object Repository {
         }
     }
 
+    fun getBaiduToken()= fire(Dispatchers.IO){
+        val baiDuPlatformTokenResponse = GreenPlantNetwork.getBaiduToken()
+        if (baiDuPlatformTokenResponse.access_token != null){
+            Result.success(baiDuPlatformTokenResponse)
+        }else{
+            Result.failure(java.lang.RuntimeException("token get failed"))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
