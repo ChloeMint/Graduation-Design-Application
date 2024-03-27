@@ -121,6 +121,7 @@
                 android:layout_height="0dp"/>
 
             <LinearLayout
+                android:id="@+id/plantDocker"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="96dp"
