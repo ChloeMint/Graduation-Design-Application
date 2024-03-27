@@ -55,6 +55,7 @@ class PlantBaikeItemActivity : BaseViewModelActivity<ActivityPlantBaikeItemBindi
         fun startActivity(context: Context, plantId:Int){
             val intent = Intent(context, PlantBaikeItemActivity::class.java)
             intent.putExtra("plantId", plantId)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
     }

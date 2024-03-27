@@ -27,6 +27,9 @@
             android:name=".component.home.PlantRecognitionActivity"
             android:exported="false" />
         <activity
+            android:name=".component.home.PlantPhotoRecognitionActivity"
+            android:exported="false" />
+        <activity
             android:name=".component.home.SearchActivity"
             android:exported="false" />
         <activity

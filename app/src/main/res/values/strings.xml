@@ -70,9 +70,9 @@
     <string name="logo_title">绿植</string>
     <string name="find_nature_beautify">发现自然之美</string>
     <string name="discover_every_greener">识别每一片绿意</string>
-    <string name="get_to_know_plant">识别花草</string>
+    <string name="get_to_know_plant">拍照识别</string>
     <string name="docker">植物医生</string>
-    <string name="AI_paint">AI绘画</string>
+    <string name="AI_paint">图片识别</string>
     <string name="plant_baike">植物百科</string>
     <string name="change_plant">换一换</string>
     <string name="in_short">简要介绍</string>

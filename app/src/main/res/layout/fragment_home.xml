@@ -87,6 +87,30 @@
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:text="@string/get_to_know_plant"
+                    android:layout_marginTop="@dimen/d10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <LinearLayout
+                android:id="@+id/photoRecognition"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_width="96dp"
+                android:layout_height="96dp">
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/paint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_marginTop="@dimen/d10"
+                    android:text="@string/AI_paint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -111,25 +135,7 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <View
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"/>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_width="96dp"
-                android:layout_height="96dp">
-                <ImageView
-                    android:src="@drawable/paint"
-                    android:layout_width="69dp"
-                    android:layout_height="69dp"/>
-                <TextView
-                    android:text="@string/AI_paint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
         </LinearLayout>
 
         <!--  百科  -->
