@@ -97,5 +97,6 @@
 
     <string name="no_message">还没有该种植物的信息哦</string>
     <string name="loading">加载中...</string>
+    <string name="send">发送</string>
 
 </resources>
