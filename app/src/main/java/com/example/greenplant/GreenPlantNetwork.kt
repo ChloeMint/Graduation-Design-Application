@@ -1,10 +1,10 @@
 package com.example.greenplant
 
 import com.example.greenplant.network.BaiduService
+import com.example.greenplant.network.DongtaiService
 import com.example.greenplant.network.PlantService
 import com.example.greenplant.network.UserService
 import okhttp3.RequestBody
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,6 +16,7 @@ object GreenPlantNetwork {
     private val userService = ServiceCreator.create<UserService>()
     private val plantService = ServiceCreator.create<PlantService>()
     private val baiduService = ServiceCreator.create<BaiduService>()
+    private val dongtaiService = ServiceCreator.create<DongtaiService>()
 
     suspend fun login(requestBody: RequestBody) = userService.login(requestBody).await()
 
@@ -36,6 +37,8 @@ object GreenPlantNetwork {
     suspend fun getBaiduToken() = baiduService.getBaiduToken().await()
 
     suspend fun getBaiduRecognition(accessToken:String, image:String) = baiduService.getBaiduPlantRecognition(accessToken, image).await()
+
+    suspend fun getDongTai(page: Int) = dongtaiService.getDongtais(page).await()
 
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {

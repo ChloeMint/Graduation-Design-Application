@@ -97,6 +97,16 @@ object Repository {
         Result.success(baiduPlantRecognitionResponse.result)
     }
 
+    fun getDongTai(page: Int) = fire(Dispatchers.IO){
+        val dongtaiResponse = GreenPlantNetwork.getDongTai(page)
+        if (dongtaiResponse.code != 500){
+            Result.success(dongtaiResponse.data)
+        }else{
+            Result.failure(RuntimeException(dongtaiResponse.msg))
+        }
+    }
+
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {

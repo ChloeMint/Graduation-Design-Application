@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/plant_item_foreground"
     tools:context=".component.communicate.CommunicateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:paddingTop="25dp"
+        android:background="?attr/colorPrimary"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="communication" />
+        android:layout_height="wrap_content">
+        <include layout="@layout/custom_toolbar_right_button" android:id="@+id/custom_toolbar"/>
+    </LinearLayout>
 
-</FrameLayout>
+<!--    <com.scwang.smart.refresh.layout.SmartRefreshLayout-->
+<!--        android:padding="@dimen/content_padding"-->
+<!--        android:id="@+id/refreshLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <com.scwang.smart.refresh.header.ClassicsHeader-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dongtaiRecycleView"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+<!--        <com.scwang.smart.refresh.footer.ClassicsFooter-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--    </com.scwang.smart.refresh.layout.SmartRefreshLayout>-->
+</LinearLayout>
