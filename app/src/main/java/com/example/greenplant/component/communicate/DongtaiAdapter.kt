@@ -75,9 +75,8 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
                 commentRecycleView.visibility = View.VISIBLE
             }
 
-            imageRecycleView.adapter = DongtaiImageAdapter(dongtai.imageList)
-            imageRecycleView.layoutManager = GridLayoutManager(GreenPlantApplication.context, 3, GridLayoutManager.VERTICAL, false)
-
+            imageRecycleView.adapter = DongtaiImageAdapter(context, dongtai.imageList)
+            imageRecycleView.layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
         }
     }
 

@@ -35,8 +35,8 @@ class PlantImageAdapter(val context:Context, private val imageList: List<String>
             }.into(plantImage)
 
             val params = imageCard.layoutParams as ViewGroup.MarginLayoutParams
-            params.width = (displayWidth - 80)/3
-            params.height = (displayWidth - 80)/3
+            params.width = (displayWidth - 80 - 55)/3
+            params.height = (displayWidth - 80 - 55)/3
             imageCard.layoutParams = params
         }
     }
