@@ -13,7 +13,9 @@ data class Dongtai(
     val imageList:List<String>,
     val like_num:Int,
     val publish_time:String,
-    val user_id:Int
+    val user_id:Int,
+    val user:User,
+    val like:List<Like>
 )
 
 data class Comment(
@@ -21,4 +23,10 @@ data class Comment(
     val comment_text:String,
     val comment_user_id:Int,
     val id: Int
+)
+
+data class Like(
+    val article_id:Int,
+    val id:Int,
+    val user_id: Int
 )

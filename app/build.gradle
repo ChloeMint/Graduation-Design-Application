@@ -62,4 +62,5 @@ dependencies {
     implementation  'io.github.scwang90:refresh-layout-kernel:2.1.0'	// 核心依赖
     implementation  'io.github.scwang90:refresh-header-classics:2.1.0'
     implementation  'io.github.scwang90:refresh-footer-classics:2.1.0'    //经典加载
+    implementation 'joda-time:joda-time:2.12.2'
 }

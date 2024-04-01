@@ -48,6 +48,7 @@ open class BaseLogicActivity : BaseCommonActivity() {
                 startActivityAfterFinishIt(LoginActivity::class.java)
             }else{
                 startActivityAfterFinishIt(MainActivity::class.java)
+
             }
         })
     }

@@ -40,7 +40,8 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
                 adapter.notifyDataSetChanged()
             }else{
                 // 一个小bug，在到最后一页数据的时候需要点两下才能切换回第一页
-                page = 0
+                baikeViewModel.setPage(1)
+                page = 1
             }
         })
     }

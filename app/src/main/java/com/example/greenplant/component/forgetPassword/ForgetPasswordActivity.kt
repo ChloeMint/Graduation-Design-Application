@@ -91,6 +91,9 @@ class ForgetPasswordActivity : BaseViewModelActivity<ActivityForgetPasswordBindi
 
         forgetPasswordViewModel.forgetPasswordResLiveData.observe(this, Observer {
             SuperUiUtil.newToast(this, "${it.getOrNull()}")
+            if (it.getOrNull() == "密码修改成功"){
+                finish()
+            }
         })
     }
 

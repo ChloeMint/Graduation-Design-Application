@@ -3,6 +3,7 @@ package com.example.greenplant.util
 import android.content.Context
 import androidx.core.content.edit
 import com.example.greenplant.GreenPlantApplication
+import com.example.greenplant.entities.User
 
 object DefaultPreferencesUtil {
     private val defaultPreferences = GreenPlantApplication.context.getSharedPreferences("preferLike", Context.MODE_PRIVATE)
@@ -45,5 +46,15 @@ object DefaultPreferencesUtil {
 
     fun getBaiduExpiresTime(): Long {
         return defaultPreferences.getLong("baiduExpiresTime", 0)!!
+    }
+
+    fun saveUserId(userId:Int){
+        defaultPreferences.edit {
+            putInt("currentUserId", userId)
+        }
+    }
+
+    fun getUserId():Int{
+        return defaultPreferences.getInt("currentUserId", 0)
     }
 }

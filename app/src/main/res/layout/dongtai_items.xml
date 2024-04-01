@@ -2,9 +2,10 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/content_padding"
+    android:layout_marginBottom="@dimen/dialog_margin"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:padding="@dimen/content_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -68,6 +69,7 @@
             android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/dialog_margin"
             android:id="@+id/imageRecycleView"
             android:layout_below="@id/content"
             android:layout_width="match_parent"

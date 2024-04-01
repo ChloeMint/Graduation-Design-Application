@@ -106,6 +106,15 @@ object Repository {
         }
     }
 
+    fun likeAndCancel(dongtaiId:Int) = fire(Dispatchers.IO){
+        val likeAndCancelResponse = GreenPlantNetwork.likeAndCancel(dongtaiId)
+        if (likeAndCancelResponse.code != 500){
+            Result.success(likeAndCancelResponse.msg)
+        }else{
+            Result.failure(RuntimeException(likeAndCancelResponse.msg))
+        }
+    }
+
 
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =

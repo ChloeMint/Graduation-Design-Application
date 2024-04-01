@@ -1,6 +1,7 @@
 package com.example.greenplant
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.angcyo.tablayout.delegate2.ViewPager2Delegate
@@ -11,11 +12,15 @@ import com.example.greenplant.main.MainAdapter
 import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.BaiduTokenViewModel
+import com.example.greenplant.viewModel.UserInfoViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
     private val baiduTokenViewModel by lazy {
         ViewModelProvider(this)[BaiduTokenViewModel::class.java]
+    }
+    private val userInfoViewModel by lazy {
+        ViewModelProvider(this)[UserInfoViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +37,14 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             if (baiDuPlatformTokenResponse != null){
                 DefaultPreferencesUtil.saveBaiduToken(baiDuPlatformTokenResponse.access_token)
                 DefaultPreferencesUtil.saveBaiduExpiresTime(System.currentTimeMillis() + (baiDuPlatformTokenResponse.expires_in*1000))
+            }
+        })
+
+        // 这个存储userId的方法还有待优化
+        userInfoViewModel.userInfoLiveData.observe(this, Observer {
+            val user = it.getOrNull()
+            if (user != null){
+                DefaultPreferencesUtil.saveUserId(user.id)
             }
         })
     }
@@ -63,6 +76,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
         if (DefaultPreferencesUtil.getBaiduToken() == "" || System.currentTimeMillis() >= DefaultPreferencesUtil.getBaiduExpiresTime()){
             baiduTokenViewModel.setStart(1)
         }
+        userInfoViewModel.setIsGettingUserInfo()
 
     }
 

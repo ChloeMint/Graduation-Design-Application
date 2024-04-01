@@ -83,7 +83,9 @@ class RegisterActivity : BaseViewModelActivity<ActivityRegisterBinding>() {
         })
         registerViewModel.registerResponseLiveData.observe(this, Observer {
             SuperUiUtil.newToast(this, "${it.getOrNull()}")
-            finish()
+            if (it.getOrNull() == "注册用户成功"){
+                finish()
+            }
         })
     }
 

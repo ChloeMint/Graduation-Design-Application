@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:id="@+id/image"
+    android:scaleType="centerCrop"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shapeAppearanceOverlay="@style/RoundedCornerImageStyle"
+    android:layout_height="100dp" />
