@@ -22,7 +22,8 @@ data class Comment(
     val article_id:Int,
     val comment_text:String,
     val comment_user_id:Int,
-    val id: Int
+    val id: Int,
+    val user:User
 )
 
 data class Like(

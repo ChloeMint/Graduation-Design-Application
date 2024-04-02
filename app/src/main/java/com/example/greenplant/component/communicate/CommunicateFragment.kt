@@ -40,6 +40,8 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
                         processRefreshAndLoadMoreStatus(true, noMore = false)
                     }
                     adapter.notifyDataSetChanged()
+                }else{
+                    page -= 1   // 这里可能还会出现一种bug，就是新发布的不满10条，然后最后几条会重新添加，应该不会有这个问题
                 }
                 processRefreshAndLoadMoreStatus(true,dongtaiList.isEmpty())
             }
@@ -50,11 +52,9 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             val result = it.getOrNull()
 //            Log.d("CommunicateFragment", "$result")
             if (result !=null){
-                // 不确定这里之后点赞刷新新数据列表会不会出bug
                 for(i in 1..page){
                     dongtaiViewModel.setPage(page)
                 }
-                adapter.notifyDataSetChanged()
             }
         })
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.greenplant.GreenPlantApplication
@@ -77,6 +78,9 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
 
             imageRecycleView.adapter = DongtaiImageAdapter(context, dongtai.imageList)
             imageRecycleView.layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+
+            commentRecycleView.adapter = CommentAdapter(dongtai.comments)
+            commentRecycleView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
     }
 
