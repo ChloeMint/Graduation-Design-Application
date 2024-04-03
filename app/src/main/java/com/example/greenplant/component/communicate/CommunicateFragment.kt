@@ -12,6 +12,7 @@ import com.example.greenplant.entities.Dongtai
 import com.example.greenplant.fragment.BaseViewModelFragment
 import com.example.greenplant.viewModel.DongtaiViewModel
 import com.example.greenplant.viewModel.LikeAndCancelViewModel
+import com.example.greenplant.viewModel.PublishCommentViewModel
 
 
 class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() {
@@ -20,6 +21,9 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
     }
     private val likeAndCancelViewModel by lazy {
         ViewModelProvider(this)[LikeAndCancelViewModel::class.java]
+    }
+    private val publishCommentViewModel by lazy {
+        ViewModelProvider(this)[PublishCommentViewModel::class.java]
     }
 
     private  val dataList = mutableListOf<Dongtai>()
@@ -52,8 +56,15 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             val result = it.getOrNull()
 //            Log.d("CommunicateFragment", "$result")
             if (result !=null){
-                for(i in 1..page){
-                    dongtaiViewModel.setPage(page)
+                refreshData()
+            }
+        })
+
+        publishCommentViewModel.publishCommentLiveData.observe(this, Observer {
+            val publishCommentResponse = it.getOrNull()
+            if (publishCommentResponse != null){
+                if (publishCommentResponse.code == 200){
+                    refreshData()
                 }
             }
         })
@@ -62,7 +73,7 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
 
     override fun initDatum() {
         super.initDatum()
-        adapter = DongtaiAdapter(requireContext(), dataList, likeAndCancelViewModel)
+        adapter = DongtaiAdapter(requireContext(), dataList, likeAndCancelViewModel, publishCommentViewModel)
         binding.dongtaiRecycleView.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.VERTICAL,false)
         binding.dongtaiRecycleView.adapter = adapter
@@ -70,7 +81,7 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
 
     override fun initView() {
         super.initView()
-        binding.customToolbar.toolBarTitle.text = "我的动态圈"
+        binding.customToolbar.toolBarTitle.text = "动态圈"
         dongtaiViewModel.setPage(1)
     }
 
@@ -93,6 +104,12 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
         binding.refreshLayout.finishRefresh(500,success,false)
         // 这里的noMoreData是为loadMore方法服务的
         binding.refreshLayout.finishLoadMore(500,success,noMore)
+    }
+
+    private fun refreshData(){
+        for(i in 1..page){
+            dongtaiViewModel.setPage(page)
+        }
     }
 
     companion object{

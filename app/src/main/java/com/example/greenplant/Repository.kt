@@ -115,6 +115,15 @@ object Repository {
         }
     }
 
+    fun publishComment(dongtaiId: Int, requestBody: RequestBody) = fire(Dispatchers.IO){
+        val publishCommentResponse = GreenPlantNetwork.publishComment(dongtaiId, requestBody)
+        if (publishCommentResponse.code != 500){
+            Result.success(publishCommentResponse)
+        }else{
+            Result.failure(RuntimeException(publishCommentResponse.msg))
+        }
+    }
+
 
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =

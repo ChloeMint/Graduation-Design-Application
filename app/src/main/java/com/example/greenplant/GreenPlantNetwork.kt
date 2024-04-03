@@ -42,6 +42,8 @@ object GreenPlantNetwork {
 
     suspend fun likeAndCancel(dongtaiId:Int) = dongtaiService.likeAndCancel(dongtaiId).await()
 
+    suspend fun publishComment(dongtaiId: Int, requestBody: RequestBody) = dongtaiService.publishComment(dongtaiId, requestBody).await()
+
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{
