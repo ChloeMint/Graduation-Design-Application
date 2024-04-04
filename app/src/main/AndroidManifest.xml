@@ -24,6 +24,9 @@
         android:theme="@style/Theme.GreenPlant"
         tools:targetApi="31">
         <activity
+            android:name=".component.communicate.PublishDongTaiActivity"
+            android:exported="false" />
+        <activity
             android:name=".component.home.PlantDockerActivity"
             android:exported="false" />
         <activity

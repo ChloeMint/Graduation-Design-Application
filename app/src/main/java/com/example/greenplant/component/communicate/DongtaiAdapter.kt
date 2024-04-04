@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.greenplant.GreenPlantApplication
 import com.example.greenplant.GreenPlantNetwork
 import com.example.greenplant.R
+import com.example.greenplant.ServiceCreator
 import com.example.greenplant.databinding.DongtaiItemsBinding
 import com.example.greenplant.entities.Comment
 import com.example.greenplant.entities.Dongtai
@@ -48,7 +49,7 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
 
             time.text = dongtai.publish_time
 
-            Glide.with(avatar).load(dongtai.user.avatar).apply {
+            Glide.with(avatar).load(ServiceCreator.BASE_URL+dongtai.user.avatar).apply {
                 // 下载error时显示的图片
                 error(R.drawable.load_failed)
             }.into(avatar)

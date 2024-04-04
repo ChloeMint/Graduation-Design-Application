@@ -1,5 +1,6 @@
 package com.example.greenplant.component.communicate
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
@@ -97,6 +98,11 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
         binding.refreshLayout.setOnLoadMoreListener {
             page+=1
             dongtaiViewModel.setPage(page)
+        }
+
+        binding.customToolbar.publish.setOnClickListener {
+            val intent = Intent(requireContext(), PublishDongTaiActivity::class.java)
+            startActivity(intent)
         }
     }
 
