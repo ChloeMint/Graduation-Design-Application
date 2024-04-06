@@ -20,18 +20,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <EditText
+            android:textSize="15sp"
+            android:textColor="@color/gray_text"
+            android:hint="@string/nowFelling"
             android:background="@null"
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-
-        <View
-            android:id="@+id/divider"
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/textCount"
             android:layout_marginTop="300dp"
-            android:background="@color/gray_text"
+            android:textColor="@color/light_gray"
+            android:textSize="15sp"
+            android:text="0/100"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_below="@id/textCount"
+            android:id="@+id/divider"
+            android:background="@color/light_gray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+
+
     </RelativeLayout>
 
 

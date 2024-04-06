@@ -99,5 +99,6 @@
     <string name="loading">加载中...</string>
     <string name="send">发送</string>
     <string name="tryComment">我也来评论</string>
+    <string name="nowFelling">此刻的心情</string>
 
 </resources>
