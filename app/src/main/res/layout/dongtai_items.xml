@@ -75,9 +75,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <VideoView
+            android:layout_marginTop="@dimen/dialog_margin"
+            android:layout_below="@id/imageRecycleView"
+            android:id="@+id/video"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/commentRecycleView"
-            android:layout_below="@+id/imageRecycleView"
+            android:layout_below="@+id/video"
             android:layout_marginTop="@dimen/dialog_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

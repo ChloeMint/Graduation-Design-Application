@@ -1,26 +1,25 @@
 package com.example.greenplant.component.communicate
 
 import android.content.Context
-import android.util.Log
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.greenplant.GreenPlantApplication
-import com.example.greenplant.GreenPlantNetwork
 import com.example.greenplant.R
 import com.example.greenplant.ServiceCreator
 import com.example.greenplant.databinding.DongtaiItemsBinding
-import com.example.greenplant.entities.Comment
 import com.example.greenplant.entities.Dongtai
 import com.example.greenplant.entities.PublishComment
 import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.viewModel.LikeAndCancelViewModel
 import com.example.greenplant.viewModel.PublishCommentViewModel
+
 
 class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, private val model: LikeAndCancelViewModel, private val publishCommentViewModel: PublishCommentViewModel) : RecyclerView.Adapter<DongtaiAdapter.ViewHolder>() {
     private val currentUserId = DefaultPreferencesUtil.getUserId()
@@ -46,6 +45,7 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
             content.visibility = View.GONE
             imageRecycleView.visibility = View.GONE
             commentRecycleView.visibility =  View.GONE
+            video.visibility = View.GONE
 
             time.text = dongtai.publish_time
 
@@ -80,6 +80,18 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
             if (dongtai.comments.isNotEmpty()){
                 commentRecycleView.visibility = View.VISIBLE
             }
+
+            if (dongtai.videoUrl != null){
+                video.visibility = View.VISIBLE
+                val mediaController = MediaController(context)
+                val uri = ServiceCreator.BASE_URL + dongtai.videoUrl
+                video.setVideoURI(Uri.parse(uri))
+                video.setMediaController(mediaController)
+                mediaController.setMediaPlayer(video)
+                video.seekTo(1)
+
+            }
+
 
             imageRecycleView.adapter = DongtaiImageAdapter(context, dongtai.imageList)
             imageRecycleView.layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)

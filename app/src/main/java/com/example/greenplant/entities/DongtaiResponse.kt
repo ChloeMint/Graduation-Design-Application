@@ -15,7 +15,8 @@ data class Dongtai(
     val publish_time:String,
     val user_id:Int,
     val user:User,
-    val like:List<Like>
+    val like:List<Like>,
+    val videoUrl:String
 )
 
 data class Comment(
