@@ -100,5 +100,6 @@
     <string name="send">发送</string>
     <string name="tryComment">我也来评论</string>
     <string name="nowFelling">此刻的心情</string>
+    <string name="publish">发布</string>
 
 </resources>

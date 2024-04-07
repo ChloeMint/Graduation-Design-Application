@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <EditText
+            android:maxLength="100"
             android:textSize="15sp"
             android:textColor="@color/gray_text"
             android:hint="@string/nowFelling"
@@ -42,6 +43,21 @@
             android:background="@color/light_gray"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+
+        <ImageView
+            android:layout_marginTop="@dimen/dialog_margin"
+            android:layout_marginLeft="-7dp"
+            android:layout_below="@id/divider"
+            android:id="@+id/addImage"
+            android:src="@drawable/add_image"
+            android:layout_width="92dp"
+            android:layout_height="92dp"/>
+        <Button
+            android:textSize="20sp"
+            android:text="@string/publish"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"/>
 
 
     </RelativeLayout>
