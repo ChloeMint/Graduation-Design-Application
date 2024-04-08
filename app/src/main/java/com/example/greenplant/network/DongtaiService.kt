@@ -2,13 +2,10 @@ package com.example.greenplant.network
 
 import com.example.greenplant.entities.BaseResponseDataClass
 import com.example.greenplant.entities.DongtaiResponse
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface DongtaiService {
     @GET("/dongtai")
@@ -19,4 +16,12 @@ interface DongtaiService {
 
     @POST("/comment/publish/{dongtaiId}")
     fun publishComment(@Path("dongtaiId") dongtaiId: Int, @Body requestBody:RequestBody): Call<BaseResponseDataClass>
+
+    @Multipart
+    @POST("/dongtai/publish")
+    fun publishDongtaiImage(
+        @Part("text") text: String,
+        @Part images: List<MultipartBody.Part>
+    ): Call<BaseResponseDataClass>
+
 }

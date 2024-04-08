@@ -4,6 +4,7 @@ import com.example.greenplant.network.BaiduService
 import com.example.greenplant.network.DongtaiService
 import com.example.greenplant.network.PlantService
 import com.example.greenplant.network.UserService
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,6 +45,7 @@ object GreenPlantNetwork {
 
     suspend fun publishComment(dongtaiId: Int, requestBody: RequestBody) = dongtaiService.publishComment(dongtaiId, requestBody).await()
 
+    suspend fun publishDongtaiImage(text:String, images:List<MultipartBody.Part>) = dongtaiService.publishDongtaiImage(text,images).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

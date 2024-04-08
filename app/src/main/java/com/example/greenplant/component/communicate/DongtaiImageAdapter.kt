@@ -8,6 +8,7 @@ import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.greenplant.R
+import com.example.greenplant.ServiceCreator
 import com.example.greenplant.databinding.DongtaiImageItemBinding
 import com.example.greenplant.databinding.DongtaiItemsBinding
 import kotlin.math.roundToInt
@@ -34,7 +35,7 @@ class DongtaiImageAdapter(private val context:Context,private val imageList: Lis
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
 
-            Glide.with(image).load(imageList[position]).apply {
+            Glide.with(image).load(ServiceCreator.BASE_URL +imageList[position]).apply {
                 // 下载error时显示的图片
                 error(R.drawable.load_failed)
             }.into(image)

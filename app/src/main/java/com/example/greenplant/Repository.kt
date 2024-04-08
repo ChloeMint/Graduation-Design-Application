@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.liveData
 import com.example.greenplant.util.DefaultPreferencesUtil
 import kotlinx.coroutines.Dispatchers
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.w3c.dom.Text
 import kotlin.coroutines.CoroutineContext
@@ -121,6 +122,16 @@ object Repository {
             Result.success(publishCommentResponse)
         }else{
             Result.failure(RuntimeException(publishCommentResponse.msg))
+        }
+    }
+
+    fun publishDongtaiImage(text:String, images:List<MultipartBody.Part>) = fire(Dispatchers.IO){
+        Log.d("Repository", text)
+        val  publishDongtaiImageResponse = GreenPlantNetwork.publishDongtaiImage(text, images)
+        if (publishDongtaiImageResponse.code != 500){
+            Result.success(publishDongtaiImageResponse.msg)
+        }else{
+            Result.failure(RuntimeException(publishDongtaiImageResponse.msg))
         }
     }
 
