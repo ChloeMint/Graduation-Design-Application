@@ -43,7 +43,7 @@ class SearchActivity : BaseViewModelActivity<ActivitySearchBinding>() {
             }else{
                     binding.noMessageImage.visibility = View.VISIBLE
                     binding.noMessageText.visibility = View.VISIBLE
-                binding.searchRecycleView.visibility = View.INVISIBLE
+                    binding.searchRecycleView.visibility = View.INVISIBLE
             }
         })
 

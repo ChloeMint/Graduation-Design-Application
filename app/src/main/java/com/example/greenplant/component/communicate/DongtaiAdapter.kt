@@ -2,6 +2,7 @@ package com.example.greenplant.component.communicate
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -81,16 +82,23 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
                 commentRecycleView.visibility = View.VISIBLE
             }
 
-            if (dongtai.videoUrl != null){
-                video.visibility = View.VISIBLE
-                val mediaController = MediaController(context)
-                val uri = ServiceCreator.BASE_URL + dongtai.videoUrl
-                video.setVideoURI(Uri.parse(uri))
-                video.setMediaController(mediaController)
-                mediaController.setMediaPlayer(video)
-                video.seekTo(1)
-
+            try {
+                if (dongtai.videoUrl != null){
+                    video.visibility = View.VISIBLE
+                    val mediaController = MediaController(context)
+                    val uri = ServiceCreator.BASE_URL + dongtai.videoUrl
+                    video.setVideoURI(Uri.parse(uri))
+                    video.setMediaController(mediaController)
+                    mediaController.setMediaPlayer(video)
+                    video.setOnPreparedListener {
+                        video.seekTo(1)
+                    }
+                }
+            }catch (e:Exception){
+                e.printStackTrace()
             }
+
+
 
 
             imageRecycleView.adapter = DongtaiImageAdapter(context, dongtai.imageList)

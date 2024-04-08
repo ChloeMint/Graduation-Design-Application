@@ -35,8 +35,10 @@
         <activity
             android:name=".component.home.PlantPhotoRecognitionActivity"
             android:exported="false" />
+        <!--    android:windowSoftInputMode="adjustPan"防止软键盘干扰布局    -->
         <activity
             android:name=".component.home.SearchActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".component.home.PlantBaikeItemActivity"
@@ -76,5 +78,18 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
+
+    <queries package="${applicationId}">
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE">
+
+            </action>
+        </intent>
+        <intent>
+            <action android:name="android.media.action.ACTION_VIDEO_CAPTURE">
+
+            </action>
+        </intent>
+    </queries>
 
 </manifest>

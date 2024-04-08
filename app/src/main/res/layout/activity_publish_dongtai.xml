@@ -31,7 +31,7 @@
         <TextView
             android:layout_alignParentRight="true"
             android:id="@+id/textCount"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="230dp"
             android:textColor="@color/light_gray"
             android:textSize="15sp"
             android:text="0/100"
@@ -52,12 +52,20 @@
             android:src="@drawable/add_image"
             android:layout_width="92dp"
             android:layout_height="92dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/imageRecycleView"
+            android:layout_marginTop="@dimen/dialog_margin"
+            android:layout_below="@id/addImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <Button
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="@string/publish"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="70dp"/>
+            android:layout_height="50dp"/>
 
 
     </RelativeLayout>
