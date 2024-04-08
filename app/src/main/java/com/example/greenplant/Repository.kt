@@ -125,8 +125,7 @@ object Repository {
         }
     }
 
-    fun publishDongtaiImage(text:String, images:List<MultipartBody.Part>) = fire(Dispatchers.IO){
-        Log.d("Repository", text)
+    fun publishDongtaiImage(text:RequestBody, images:List<MultipartBody.Part>) = fire(Dispatchers.IO){
         val  publishDongtaiImageResponse = GreenPlantNetwork.publishDongtaiImage(text, images)
         if (publishDongtaiImageResponse.code != 500){
             Result.success(publishDongtaiImageResponse.msg)

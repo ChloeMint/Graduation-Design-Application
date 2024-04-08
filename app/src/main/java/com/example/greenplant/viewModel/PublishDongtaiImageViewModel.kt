@@ -1,6 +1,5 @@
 package com.example.greenplant.viewModel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
@@ -31,7 +30,13 @@ class PublishDongtaiImageViewModel : ViewModel() {
             images.add(part)
         }
 
-        Repository.publishDongtaiImage(it.text,images)
+        val textRequestBody: RequestBody = RequestBody.create(
+            MediaType.parse("text/plain"),
+            it.text
+        )
+
+
+        Repository.publishDongtaiImage(textRequestBody,images)
     }
     fun setDongtaiImageLiveData(dongtai:DongtaiWithImage){
         dongtaiLiveData.value = dongtai

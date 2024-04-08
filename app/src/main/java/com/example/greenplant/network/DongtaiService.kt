@@ -20,7 +20,7 @@ interface DongtaiService {
     @Multipart
     @POST("/dongtai/publish")
     fun publishDongtaiImage(
-        @Part("text") text: String,
+        @Part("text") text: RequestBody,
         @Part images: List<MultipartBody.Part>
     ): Call<BaseResponseDataClass>
 
