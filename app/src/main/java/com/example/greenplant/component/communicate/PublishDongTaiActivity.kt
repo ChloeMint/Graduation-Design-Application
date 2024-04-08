@@ -35,6 +35,9 @@ class PublishDongTaiActivity : BaseViewModelActivity<ActivityPublishDongtaiBindi
             val msg = it.getOrNull()
             if (msg != ""){
                 SuperUiUtil.newToast(this,"$msg")
+                if (msg == "发布动态成功"){
+                    finish()
+                }
             }
         })
     }
