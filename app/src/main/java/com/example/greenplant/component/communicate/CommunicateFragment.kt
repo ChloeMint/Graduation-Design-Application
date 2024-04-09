@@ -110,7 +110,8 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             popupMenu.setOnMenuItemClickListener {menuItem->
                 when (menuItem.itemId){
                     R.id.textDongTai ->  {
-                        Toast.makeText(requireContext(),"textDongTai",Toast.LENGTH_SHORT).show()
+                        val intent = Intent(requireContext(),PublishDongtaiTextActivity::class.java)
+                        requireContext().startActivity(intent)
                         return@setOnMenuItemClickListener true
                     }
                     R.id.imageDongTai -> {

@@ -27,4 +27,8 @@ interface DongtaiService {
     @Multipart
     @POST("/dongtai/publish")
     fun publishDongtaiWithVideo(@Part("text") text: RequestBody, @Part video: MultipartBody.Part): Call<BaseResponseDataClass>
+
+    @Multipart
+    @POST("/dongtai/publish")
+    fun publishDongtaiText(@Part("text") text: RequestBody): Call<BaseResponseDataClass>
 }

@@ -14,10 +14,10 @@
 
     <queries package="${applicationId}">
         <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE"></action>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
         <intent>
-            <action android:name="android.media.action.ACTION_VIDEO_CAPTURE"></action>
+            <action android:name="android.media.action.ACTION_VIDEO_CAPTURE" />
         </intent>
     </queries>
 
@@ -32,6 +32,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GreenPlant"
         tools:targetApi="31">
+        <activity
+            android:name=".component.communicate.PublishDongtaiTextActivity"
+            android:exported="false" />
         <activity
             android:name=".component.communicate.PublishDongtaiWithVideoActivity"
             android:exported="false" />

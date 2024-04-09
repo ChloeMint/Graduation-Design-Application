@@ -143,6 +143,14 @@ object Repository {
         }
     }
 
+    fun publishDongtaiText(text: RequestBody) = fire(Dispatchers.IO){
+        val publishDongtaiTextResponse = GreenPlantNetwork.publishDongtaiText(text)
+        if (publishDongtaiTextResponse.code != 500){
+            Result.success(publishDongtaiTextResponse.msg)
+        }else{
+            Result.failure(RuntimeException(publishDongtaiTextResponse.msg))
+        }
+    }
 
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
