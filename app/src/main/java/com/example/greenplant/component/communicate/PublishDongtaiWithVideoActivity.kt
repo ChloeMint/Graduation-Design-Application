@@ -6,9 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivityPublishDongtaiWithVideoBinding
+import com.example.greenplant.entities.DongtaiWithVideo
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.PublishDongtaiWithVideoViewModel
 import com.luck.picture.lib.basic.PictureSelector
 import com.luck.picture.lib.config.SelectMimeType
 import com.luck.picture.lib.entity.LocalMedia
@@ -20,11 +24,22 @@ import java.io.File
 
 class PublishDongtaiWithVideoActivity : BaseViewModelActivity<ActivityPublishDongtaiWithVideoBinding>() {
     private val videoResult = mutableListOf<LocalMedia>()
+    private val publishDongtaiWithVideoViewModel by lazy {
+        ViewModelProvider(this)[PublishDongtaiWithVideoViewModel::class.java]
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        publishDongtaiWithVideoViewModel.publishDongtaiWithVideoLiveData.observe(this, Observer {
+            val msg = it.getOrNull()
+            if (msg != null){
+                SuperUiUtil.newToast(this,msg)
+            }
+            if (msg == "发布动态成功"){
+                finish()
+            }
+        })
     }
     override fun initViews() {
         super.initViews()
@@ -43,10 +58,11 @@ class PublishDongtaiWithVideoActivity : BaseViewModelActivity<ActivityPublishDon
         }
 
         binding.publish.setOnClickListener {
-            if (videoResult.isEmpty() && binding.content.text.toString() == ""){
+            val content = binding.content.text.toString()
+            if (videoResult.isEmpty() && content == ""){
                 SuperUiUtil.newToast(this,"您没有输入任何内容")
             }else{
-
+                publishDongtaiWithVideoViewModel.setPublishDongtaiWithVideoLiveData(DongtaiWithVideo(content,videoResult[0]))
             }
         }
 

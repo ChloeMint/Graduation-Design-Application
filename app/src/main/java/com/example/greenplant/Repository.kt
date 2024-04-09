@@ -134,6 +134,15 @@ object Repository {
         }
     }
 
+    fun publishDongtaiWithVideo(text: RequestBody, video:MultipartBody.Part) = fire(Dispatchers.IO){
+        val publishDongtaiWithVideoResponse = GreenPlantNetwork.publishDongtaiWithVideo(text, video)
+        if (publishDongtaiWithVideoResponse.code != 500){
+            Result.success(publishDongtaiWithVideoResponse.msg)
+        }else{
+            Result.failure(RuntimeException(publishDongtaiWithVideoResponse.msg))
+        }
+    }
+
 
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =

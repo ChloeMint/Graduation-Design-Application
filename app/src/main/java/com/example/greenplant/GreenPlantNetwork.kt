@@ -46,6 +46,8 @@ object GreenPlantNetwork {
     suspend fun publishComment(dongtaiId: Int, requestBody: RequestBody) = dongtaiService.publishComment(dongtaiId, requestBody).await()
 
     suspend fun publishDongtaiImage(text:RequestBody, images:List<MultipartBody.Part>) = dongtaiService.publishDongtaiImage(text,images).await()
+
+    suspend fun publishDongtaiWithVideo(text: RequestBody, video: MultipartBody.Part) = dongtaiService.publishDongtaiWithVideo(text, video).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{
