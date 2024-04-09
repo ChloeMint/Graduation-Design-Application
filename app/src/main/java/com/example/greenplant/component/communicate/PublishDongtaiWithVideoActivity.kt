@@ -1,50 +1,35 @@
 package com.example.greenplant.component.communicate
 
 import android.Manifest
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.greenplant.activity.BaseViewModelActivity
-import com.example.greenplant.databinding.ActivityPublishDongtaiBinding
-import com.example.greenplant.entities.DongtaiWithImage
+import com.example.greenplant.databinding.ActivityPublishDongtaiWithVideoBinding
 import com.example.greenplant.util.SuperUiUtil
-import com.example.greenplant.viewModel.PublishDongtaiImageViewModel
 import com.luck.picture.lib.basic.PictureSelector
-import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.SelectMimeType
 import com.luck.picture.lib.entity.LocalMedia
 import com.luck.picture.lib.interfaces.OnResultCallbackListener
 import com.permissionx.guolindev.PermissionX
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import java.io.File
 
 
-class PublishDongTaiActivity : BaseViewModelActivity<ActivityPublishDongtaiBinding>() {
-    private val imageResult = mutableListOf<LocalMedia>()
-    private val publishDongtaiImageViewModel by lazy {
-        ViewModelProvider(this)[PublishDongtaiImageViewModel::class.java]
-    }
+class PublishDongtaiWithVideoActivity : BaseViewModelActivity<ActivityPublishDongtaiWithVideoBinding>() {
+    private val videoResult = mutableListOf<LocalMedia>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        publishDongtaiImageViewModel.publishDongtaiImageLiveData.observe(this, Observer {
-            val msg = it.getOrNull()
-            if (msg != ""){
-                SuperUiUtil.newToast(this,"$msg")
-                if (msg == "发布动态成功"){
-                    finish()
-                }
-            }
-        })
+
     }
     override fun initViews() {
         super.initViews()
         QMUIStatusBarHelper.translucent(this)
-        setCenterToolBar(binding.toolbar, "发布图片动态")
+        setCenterToolBar(binding.toolbar, "发布视频动态")
     }
 
     override fun initListener() {
@@ -58,12 +43,17 @@ class PublishDongTaiActivity : BaseViewModelActivity<ActivityPublishDongtaiBindi
         }
 
         binding.publish.setOnClickListener {
-            val text = binding.content.text.toString()
-            if (text!="" || imageResult.isNotEmpty()){
-                publishDongtaiImageViewModel.setDongtaiImageLiveData(DongtaiWithImage(text,imageResult))
-            }else{
+            if (videoResult.isEmpty() && binding.content.text.toString() == ""){
                 SuperUiUtil.newToast(this,"您没有输入任何内容")
+            }else{
+
             }
+        }
+
+        binding.cancel.setOnClickListener {
+            videoResult.removeAt(0)
+            binding.videoBox.visibility = View.GONE
+            binding.addImage.visibility = View.VISIBLE
         }
     }
 
@@ -90,28 +80,22 @@ class PublishDongTaiActivity : BaseViewModelActivity<ActivityPublishDongtaiBindi
     }
     private fun launchAlbum() {
         PictureSelector.create(this)
-            .openGallery(SelectMimeType.ofImage())
+            .openGallery(SelectMimeType.ofVideo())
             .setImageEngine(GlideEngine.createGlideEngine())
-            .setMaxSelectNum(9)
-            .isPreviewImage(true)
+            .setMaxSelectNum(1)
+            .isPreviewVideo(true)
             .forResult(object : OnResultCallbackListener<LocalMedia> {
                 override fun onResult(result: ArrayList<LocalMedia>) {
                     if (result.isNotEmpty()){
-                        imageResult.addAll(result)
+                        videoResult.addAll(result)
                         binding.addImage.visibility = View.GONE
-                        binding.imageRecycleView.visibility = View.VISIBLE
-                        binding.imageRecycleView.layoutManager = GridLayoutManager(this@PublishDongTaiActivity,4, GridLayoutManager.VERTICAL, false)
-                        binding.imageRecycleView.adapter = PublishImageAdapter(this@PublishDongTaiActivity,
-                            imageResult as ArrayList<LocalMedia>, object : OnImagesRemovedListener{
-                            override fun onImagesRemoved() {
-                                binding.addImage.visibility = View.VISIBLE
-                                binding.imageRecycleView.visibility = View.GONE
-                            }
-                        })
+                        binding.video.setVideoURI(Uri.parse(result[0].path))
+                        binding.video.seekTo(1)
+                        binding.videoBox.visibility = View.VISIBLE
                     }
                 }
                 override fun onCancel() {
-                    SuperUiUtil.newToast(this@PublishDongTaiActivity,"取消选择")
+                    SuperUiUtil.newToast(this@PublishDongtaiWithVideoActivity,"取消选择")
                 }
             })
 

@@ -114,11 +114,13 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
                         return@setOnMenuItemClickListener true
                     }
                     R.id.imageDongTai -> {
-                        Toast.makeText(requireContext(),"imageDongTai",Toast.LENGTH_SHORT).show()
+                        val intent = Intent(requireContext(),PublishDongTaiActivity::class.java)
+                        requireContext().startActivity(intent)
                         return@setOnMenuItemClickListener true
                     }
                     else -> {
-                        Toast.makeText(requireContext(),"videoDongTai",Toast.LENGTH_SHORT).show()
+                        val intent = Intent(requireContext(),PublishDongtaiWithVideoActivity::class.java)
+                        requireContext().startActivity(intent)
                         return@setOnMenuItemClickListener true
                     }
                 }
