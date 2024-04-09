@@ -161,6 +161,7 @@
                 android:layout_width="80dp"
                 android:layout_height="28dp">
                 <ImageView
+                    android:id="@+id/changeImage"
                     android:src="@drawable/change_plant"
                     android:layout_width="20dp"
                     android:layout_height="20dp"/>

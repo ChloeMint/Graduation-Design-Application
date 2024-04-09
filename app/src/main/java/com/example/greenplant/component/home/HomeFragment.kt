@@ -1,5 +1,6 @@
 package com.example.greenplant.component.home
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
@@ -74,6 +75,10 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
         binding.changePlant.setOnClickListener {
             page+=1
             baikeViewModel.setPage(page)
+
+            val animator = ObjectAnimator.ofFloat(binding.changeImage, "rotation", 0f, 360f)
+            animator.duration = 1000 // 设置动画时长为 1 秒
+            animator.start()
         }
 
         binding.searchBox.setOnClickListener {
