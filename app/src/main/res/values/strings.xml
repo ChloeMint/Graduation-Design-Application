@@ -101,5 +101,8 @@
     <string name="tryComment">我也来评论</string>
     <string name="nowFelling">此刻的心情</string>
     <string name="publish">发布</string>
+    <string name="textDongTai">文本动态</string>
+    <string name="imageDongTai">图片动态</string>
+    <string name="videoDongTai">视频动态</string>
 
 </resources>

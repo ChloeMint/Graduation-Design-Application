@@ -4,13 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.greenplant.R
 import com.example.greenplant.databinding.FragmentCommunicateBinding
 import com.example.greenplant.entities.Dongtai
 import com.example.greenplant.fragment.BaseViewModelFragment
+import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.DongtaiViewModel
 import com.example.greenplant.viewModel.LikeAndCancelViewModel
 import com.example.greenplant.viewModel.PublishCommentViewModel
@@ -101,8 +105,25 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
         }
 
         binding.customToolbar.publish.setOnClickListener {
-            val intent = Intent(requireContext(), PublishDongTaiActivity::class.java)
-            startActivity(intent)
+            val popupMenu = PopupMenu(requireContext(),it)
+            popupMenu.menuInflater.inflate(R.menu.communication_menu,popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener {menuItem->
+                when (menuItem.itemId){
+                    R.id.textDongTai ->  {
+                        Toast.makeText(requireContext(),"textDongTai",Toast.LENGTH_SHORT).show()
+                        return@setOnMenuItemClickListener true
+                    }
+                    R.id.imageDongTai -> {
+                        Toast.makeText(requireContext(),"imageDongTai",Toast.LENGTH_SHORT).show()
+                        return@setOnMenuItemClickListener true
+                    }
+                    else -> {
+                        Toast.makeText(requireContext(),"videoDongTai",Toast.LENGTH_SHORT).show()
+                        return@setOnMenuItemClickListener true
+                    }
+                }
+            }
+            popupMenu.show()
         }
     }
 
@@ -119,6 +140,7 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
     }
 
     companion object{
+        const val TAG = "CommunicateFragment"
         fun newInstance(): CommunicateFragment {
             val args = Bundle()
 
