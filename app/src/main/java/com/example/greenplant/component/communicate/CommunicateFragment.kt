@@ -128,6 +128,10 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             }
             popupMenu.show()
         }
+
+        binding.customToolbar.toolBarTitle.setOnClickListener {
+            binding.dongtaiRecycleView.smoothScrollToPosition(0)
+        }
     }
 
     private fun processRefreshAndLoadMoreStatus(success:Boolean, noMore:Boolean = false){
