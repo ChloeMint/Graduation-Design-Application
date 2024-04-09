@@ -28,6 +28,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"/>
             <EditText
+                android:hint="@string/plantName"
                 android:inputType="text"
                 android:id="@+id/editView"
                 android:layout_weight="1"

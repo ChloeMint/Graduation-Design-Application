@@ -104,5 +104,6 @@
     <string name="textDongTai">文本动态</string>
     <string name="imageDongTai">图片动态</string>
     <string name="videoDongTai">视频动态</string>
+    <string name="plantName">请输入植物名称</string>
 
 </resources>
