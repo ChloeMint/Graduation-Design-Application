@@ -12,12 +12,14 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.greenplant.databinding.FragmentWeatherBinding
 import com.example.greenplant.entities.Position
 import com.example.greenplant.entities.Sky
 import com.example.greenplant.entities.getSky
 import com.example.greenplant.fragment.BaseViewModelFragment
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.GetNearByDayViewModel
 import com.example.greenplant.viewModel.GetRealtimeViewModel
 import com.example.greenplant.viewModel.ProvinceViewModel
 import com.permissionx.guolindev.PermissionX
@@ -35,6 +37,10 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
         ViewModelProvider(requireActivity())[GetRealtimeViewModel::class.java]
     }
 
+    private val getNearByDayViewModel by lazy {
+        ViewModelProvider(requireActivity())[GetNearByDayViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         provinceViewModel.getProvinceResponseLiveData.observe(this, Observer {
@@ -43,7 +49,7 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 binding.where.text = provinceResponse.data.city
             }
         })
-        getRealtimeViewModel.realtimeLiveData.observe(requireActivity(), Observer {
+        getRealtimeViewModel.realtimeLiveData.observe(this, Observer {
             val realtimeResponse = it.getOrNull()
 
             if (realtimeResponse != null){
@@ -52,8 +58,23 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 binding.weather.text = sky.info
                 binding.AQI.text = realtimeResponse.result.realtime.air_quality.aqi.chn.toString()
                 binding.weatherBackground.setImageResource(sky.bg)
-//                binding.weatherLifeIndex.dressing.text = realtimeResponse.result.realtime.life_index.comfort.desc
-//                binding.weatherLifeIndex.ultraviolet.text = realtimeResponse.result.realtime.life_index.ultraviolet.desc
+            }
+        })
+
+        getNearByDayViewModel.nearByDayLiveData.observe(this, Observer {
+            val nearByDayResponse = it.getOrNull()
+            if (nearByDayResponse != null){
+                val temperatureList = nearByDayResponse.result.daily.temperature
+                val weatherList = nearByDayResponse.result.daily.skycon
+                val lifeIndex = nearByDayResponse.result.daily.life_index
+
+                binding.weatherNotice.noticeRecycleView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL,false)
+                binding.weatherNotice.noticeRecycleView.adapter = NearByDayWeatherAdapter(temperatureList, weatherList)
+
+                binding.weatherLifeIndex.codeRisk.text = lifeIndex.coldRisk[0].desc
+                binding.weatherLifeIndex.dressing.text = lifeIndex.dressing[0].desc
+                binding.weatherLifeIndex.ultraviolet.text = lifeIndex.ultraviolet[0].desc
+                binding.weatherLifeIndex.carWashing.text = lifeIndex.carWashing[0].desc
             }
         })
     }
@@ -88,7 +109,7 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 val position = Position(latitude,longitude)
 //                provinceViewModel.setPositionLiveData(position)   // 根据定位获取地区，毕设展示的时候需要打开注解
 //                getRealtimeViewModel.setPositionLiveData(position)    // 获取实时天气
-
+                getNearByDayViewModel.setPositionLiveData(position)
 
             }
 

@@ -13,7 +13,6 @@ data class Realtime(
     val temperature: Double,
     val skycon: String,
     val air_quality:AirQuality,
-    val life_index:LifeIndex
 )
 
 data class AirQuality(
@@ -21,17 +20,4 @@ data class AirQuality(
 )
 data class AQI(
     val chn:Int
-)
-
-data class LifeIndex(
-    val ultraviolet:Ultraviolet,
-    val comfort:Comfort
-)
-
-data class Ultraviolet(
-    val desc:String
-)
-
-data class Comfort(
-    val desc:String
 )

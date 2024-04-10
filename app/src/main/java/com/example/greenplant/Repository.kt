@@ -171,6 +171,15 @@ object Repository {
         }
     }
 
+    fun getNearByDay(token:String, lng: Double, lat: Double, dailysteps:Int) = fire(Dispatchers.IO){
+        val nearByDayResponse = GreenPlantNetwork.getNearByDay(token, lng, lat, dailysteps)
+        if (nearByDayResponse.status == "ok"){
+            Result.success(nearByDayResponse)
+        }else{
+            Result.failure(RuntimeException(nearByDayResponse.status))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
