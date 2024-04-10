@@ -1,0 +1,11 @@
+package com.example.greenplant.network
+
+import com.example.greenplant.entities.ProvinceResponse
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface WeatherService {
+    @GET("https://api.kertennet.com/geography/locationInfo")
+    fun getProvince(@Query("lat") lat:Double, @Query("lng") lng:Double):Call<ProvinceResponse>
+}

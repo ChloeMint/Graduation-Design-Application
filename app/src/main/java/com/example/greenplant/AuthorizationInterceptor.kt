@@ -9,7 +9,7 @@ class AuthorizationInterceptor : Interceptor {
         val originalRequest = chain.request()
         val token = DefaultPreferencesUtil.getToken()
 
-        val requestBuilder = originalRequest.newBuilder().header("Authorization",token)
+        val requestBuilder = originalRequest.newBuilder().header("Authorization",token).header("appCode","q1ktbQZJai15ebB3AB9DZWs59WntJ79l")
         val request = requestBuilder.build()
         return chain.proceed(request)
     }

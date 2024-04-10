@@ -1,9 +1,6 @@
 package com.example.greenplant
 
-import com.example.greenplant.network.BaiduService
-import com.example.greenplant.network.DongtaiService
-import com.example.greenplant.network.PlantService
-import com.example.greenplant.network.UserService
+import com.example.greenplant.network.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -18,6 +15,7 @@ object GreenPlantNetwork {
     private val plantService = ServiceCreator.create<PlantService>()
     private val baiduService = ServiceCreator.create<BaiduService>()
     private val dongtaiService = ServiceCreator.create<DongtaiService>()
+    private val weatherService = ServiceCreator.create<WeatherService>()
 
     suspend fun login(requestBody: RequestBody) = userService.login(requestBody).await()
 
@@ -50,6 +48,8 @@ object GreenPlantNetwork {
     suspend fun publishDongtaiWithVideo(text: RequestBody, video: MultipartBody.Part) = dongtaiService.publishDongtaiWithVideo(text, video).await()
 
     suspend fun publishDongtaiText(text: RequestBody) = dongtaiService.publishDongtaiText(text).await()
+
+    suspend fun getProvince(lat:Double,lng:Double) = weatherService.getProvince(lat, lng).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

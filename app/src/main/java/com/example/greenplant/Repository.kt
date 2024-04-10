@@ -143,6 +143,16 @@ object Repository {
         }
     }
 
+    fun getProvince(lat:Double,lng:Double) = fire(Dispatchers.IO){
+        val provinceResponse = GreenPlantNetwork.getProvince(lat, lng)
+
+        if (provinceResponse.code != 500){
+            Result.success(provinceResponse)
+        }else{
+            Result.failure(RuntimeException(provinceResponse.message))
+        }
+    }
+
     fun publishDongtaiText(text: RequestBody) = fire(Dispatchers.IO){
         val publishDongtaiTextResponse = GreenPlantNetwork.publishDongtaiText(text)
         if (publishDongtaiTextResponse.code != 500){
