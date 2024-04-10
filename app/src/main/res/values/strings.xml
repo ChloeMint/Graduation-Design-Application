@@ -105,5 +105,7 @@
     <string name="imageDongTai">图片动态</string>
     <string name="videoDongTai">视频动态</string>
     <string name="plantName">请输入植物名称</string>
-
+    <string name="divide_weather_and_aqi">|</string>
+    <string name="aqi_text">空气指数</string>
+    <string name="notice">预告</string>
 </resources>
