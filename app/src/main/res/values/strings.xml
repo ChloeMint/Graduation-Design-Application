@@ -108,4 +108,9 @@
     <string name="divide_weather_and_aqi">|</string>
     <string name="aqi_text">空气指数</string>
     <string name="notice">预告</string>
+    <string name="life_index">生活指数</string>
+    <string name="cold_risk">感冒</string>
+    <string name="dress">穿衣</string>
+    <string name="ultraviolet">实时紫外线</string>
+    <string name="car_washing">洗车</string>
 </resources>
