@@ -14,11 +14,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.databinding.FragmentWeatherBinding
 import com.example.greenplant.entities.Position
+import com.example.greenplant.entities.Sky
+import com.example.greenplant.entities.getSky
 import com.example.greenplant.fragment.BaseViewModelFragment
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.GetRealtimeViewModel
 import com.example.greenplant.viewModel.ProvinceViewModel
 import com.permissionx.guolindev.PermissionX
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import kotlin.math.roundToInt
 
 
 class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
@@ -27,6 +31,9 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
     private val provinceViewModel by lazy {
         ViewModelProvider(requireActivity())[ProvinceViewModel::class.java]
     }
+    private val getRealtimeViewModel by lazy {
+        ViewModelProvider(requireActivity())[GetRealtimeViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +41,19 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
             val provinceResponse = it.getOrNull()
             if (provinceResponse != null){
                 binding.where.text = provinceResponse.data.city
+            }
+        })
+        getRealtimeViewModel.realtimeLiveData.observe(requireActivity(), Observer {
+            val realtimeResponse = it.getOrNull()
+
+            if (realtimeResponse != null){
+                val sky = getSky(realtimeResponse.result.realtime.skycon)
+                binding.temperature.text = realtimeResponse.result.realtime.temperature.roundToInt().toString()+"℃"
+                binding.weather.text = sky.info
+                binding.AQI.text = realtimeResponse.result.realtime.air_quality.aqi.chn.toString()
+                binding.weatherBackground.setImageResource(sky.bg)
+//                binding.weatherLifeIndex.dressing.text = realtimeResponse.result.realtime.life_index.comfort.desc
+//                binding.weatherLifeIndex.ultraviolet.text = realtimeResponse.result.realtime.life_index.ultraviolet.desc
             }
         })
     }
@@ -64,7 +84,11 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 val latitude = location.latitude
                 val longitude = location.longitude
                 // 使用latitude和longitude
-//                provinceViewModel.setPositionLiveData(Position(latitude,longitude))   // 根据定位获取地区，毕设展示的时候需要打开注解
+
+                val position = Position(latitude,longitude)
+//                provinceViewModel.setPositionLiveData(position)   // 根据定位获取地区，毕设展示的时候需要打开注解
+//                getRealtimeViewModel.setPositionLiveData(position)    // 获取实时天气
+
 
             }
 

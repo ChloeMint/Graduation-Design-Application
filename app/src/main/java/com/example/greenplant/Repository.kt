@@ -162,6 +162,15 @@ object Repository {
         }
     }
 
+    fun getRealtime(token:String, lng: Double, lat: Double) = fire(Dispatchers.IO){
+        val realtimeResponse = GreenPlantNetwork.getRealtime(token, lng, lat)
+        if (realtimeResponse.status == "ok"){
+            Result.success(realtimeResponse)
+        }else{
+            Result.failure(RuntimeException(realtimeResponse.status))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
