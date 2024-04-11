@@ -82,6 +82,9 @@
 
             <!--      lifeIndex      -->
             <include layout="@layout/weather_life_index" android:id="@+id/weatherLifeIndex"/>
+
+            <!--     city_recommend       -->
+            <include layout="@layout/city_recommend_plant" android:id="@+id/cityRecommendPlant"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

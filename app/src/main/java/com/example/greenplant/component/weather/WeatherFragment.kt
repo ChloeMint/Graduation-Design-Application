@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.greenplant.databinding.FragmentWeatherBinding
 import com.example.greenplant.entities.Position
 import com.example.greenplant.entities.Sky
+import com.example.greenplant.entities.getPlantRecommend
 import com.example.greenplant.entities.getSky
 import com.example.greenplant.fragment.BaseViewModelFragment
 import com.example.greenplant.util.SuperUiUtil
@@ -111,6 +112,10 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
 //                getRealtimeViewModel.setPositionLiveData(position)    // 获取实时天气
 //                getNearByDayViewModel.setPositionLiveData(position)   // 获取近四天的天气
 
+                val plantRecommend = getPlantRecommend(longitude,latitude)
+                binding.cityRecommendPlant.cityType.text = plantRecommend.cityType
+                binding.cityRecommendPlant.feature.text = plantRecommend.environment
+                binding.cityRecommendPlant.sut.text = plantRecommend.plantGrow
             }
 
             override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
