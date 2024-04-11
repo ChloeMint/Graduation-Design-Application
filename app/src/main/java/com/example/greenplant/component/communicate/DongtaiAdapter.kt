@@ -90,7 +90,7 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
                     video.setVideoURI(Uri.parse(uri))
                     video.setMediaController(mediaController)
                     mediaController.setMediaPlayer(video)
-                    video.seekTo(1)
+//                    video.seekTo(1)
                 }
             }catch (e:Exception){
                 e.printStackTrace()

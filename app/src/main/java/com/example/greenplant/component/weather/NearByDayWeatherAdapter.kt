@@ -9,9 +9,11 @@ import com.example.greenplant.databinding.NoticeItemBinding
 import com.example.greenplant.entities.SkyCon
 import com.example.greenplant.entities.Temperature
 import com.example.greenplant.entities.getSky
-import java.text.SimpleDateFormat
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.math.roundToInt
+
 
 class NearByDayWeatherAdapter(private val temperatureList: List<Temperature>,private val weatherList:List<SkyCon>) : RecyclerView.Adapter<NearByDayWeatherAdapter.ViewHolder>() {
     inner class ViewHolder(val binding:NoticeItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -26,13 +28,17 @@ class NearByDayWeatherAdapter(private val temperatureList: List<Temperature>,pri
         return temperatureList.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
             val temperature = temperatureList[position]
             val skyCon = weatherList[position]
 
-            date.text = temperature.date
+            val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+            val zonedDateTime = ZonedDateTime.parse(temperature.date, formatter)
+            val localDate = zonedDateTime.toLocalDate()
+            val simpleDateString = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+            date.text = simpleDateString
+
 
             val icon = getSky(skyCon.value)
             weatherIcon.setImageResource(icon.icon)

@@ -109,7 +109,7 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 val position = Position(latitude,longitude)
 //                provinceViewModel.setPositionLiveData(position)   // 根据定位获取地区，毕设展示的时候需要打开注解
 //                getRealtimeViewModel.setPositionLiveData(position)    // 获取实时天气
-                getNearByDayViewModel.setPositionLiveData(position)
+//                getNearByDayViewModel.setPositionLiveData(position)   // 获取近四天的天气
 
             }
 
