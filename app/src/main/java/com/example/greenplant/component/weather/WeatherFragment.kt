@@ -84,6 +84,15 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
         requestPermission()
     }
 
+    override fun initListener() {
+        super.initListener()
+        binding.refreshLayout.setOnRefreshListener {
+            locationManager.removeUpdates(locationListener)
+            setPositionListener()
+            binding.refreshLayout.finishRefresh(500, true,false)
+        }
+    }
+
     private fun requestPermission() {
         PermissionX.init(this).permissions(
             Manifest.permission.READ_PHONE_STATE,
@@ -130,7 +139,10 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 // 可以选择性地实现此方法以处理位置提供程序的禁用
             }
         }
+        setPositionListener()
+    }
 
+    private fun setPositionListener(){
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             if (ActivityCompat.checkSelfPermission(
                     requireContext(),

@@ -1,90 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
+
+    <com.scwang.smart.refresh.header.ClassicsHeader
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/weatherBackground"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_clear_day"
-                android:layout_width="match_parent"
-                android:layout_height="540dp"/>
-            <LinearLayout
-                android:id="@+id/placeBox"
-                android:layout_marginTop="@dimen/d130"
-                android:layout_centerHorizontal="true"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@drawable/where"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:id="@+id/where"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="北京市"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/temperature"
-                android:layout_marginTop="@dimen/dialog_margin"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="80sp"
-                android:text="10℃"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/placeBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/temperature"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/weather"
-                    style="@style/weatherText"
-                    android:text="晴"/>
-                <TextView
-                    android:layout_marginLeft="@dimen/d10"
-                    android:text="@string/divide_weather_and_aqi"
-                    style="@style/weatherText"/>
-                <TextView
-                    android:layout_marginLeft="@dimen/d10"
-                    android:text="@string/aqi_text"
-                    style="@style/weatherText"/>
-                <TextView
-                    android:id="@+id/AQI"
-                    android:text="26"
-                    android:layout_marginLeft="@dimen/d10"
-                    style="@style/weatherText"/>
-            </LinearLayout>
-        </RelativeLayout>
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:padding="@dimen/content_padding"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <!--     notice       -->
-            <include layout="@layout/weather_notice" android:id="@+id/weatherNotice"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <!--      lifeIndex      -->
-            <include layout="@layout/weather_life_index" android:id="@+id/weatherLifeIndex"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <!--     city_recommend       -->
-            <include layout="@layout/city_recommend_plant" android:id="@+id/cityRecommendPlant"/>
+                <ImageView
+                    android:id="@+id/weatherBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="540dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_clear_day" />
+
+                <LinearLayout
+                    android:id="@+id/placeBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/d130"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/where" />
+
+                    <TextView
+                        android:id="@+id/where"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="北京市"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/placeBox"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dialog_margin"
+                    android:text="10℃"
+                    android:textColor="@color/white"
+                    android:textSize="80sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/temperature"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/weather"
+                        style="@style/weatherText"
+                        android:text="晴" />
+
+                    <TextView
+                        style="@style/weatherText"
+                        android:layout_marginLeft="@dimen/d10"
+                        android:text="@string/divide_weather_and_aqi" />
+
+                    <TextView
+                        style="@style/weatherText"
+                        android:layout_marginLeft="@dimen/d10"
+                        android:text="@string/aqi_text" />
+
+                    <TextView
+                        android:id="@+id/AQI"
+                        style="@style/weatherText"
+                        android:layout_marginLeft="@dimen/d10"
+                        android:text="26" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/content_padding">
+                <!--     notice       -->
+                <include
+                    android:id="@+id/weatherNotice"
+                    layout="@layout/weather_notice" />
+
+                <!--      lifeIndex      -->
+                <include
+                    android:id="@+id/weatherLifeIndex"
+                    layout="@layout/weather_life_index" />
+
+                <!--     city_recommend       -->
+                <include
+                    android:id="@+id/cityRecommendPlant"
+                    layout="@layout/city_recommend_plant" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>
