@@ -114,4 +114,6 @@
     <string name="ultraviolet">实时紫外线</string>
     <string name="car_washing">洗车</string>
     <string name="plantRecommend">绿荫推荐</string>
+    <string name="self_introduction">用户简介：</string>
+    <string name="plant_note">植物笔记清单</string>
 </resources>

@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.GreenPlant" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#89A87F</item>
+<!--        <item name="colorPrimary">#89A87F</item>-->
+        <item name="colorPrimary">#9AC68D</item>
         <item name="colorOnSurface">#3C3838</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -42,6 +43,12 @@
     <style name="RoundedCornerImageStyle">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">5dp</item>
+    </style>
+
+
+    <style name="RoundedImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
     </style>
     
     <style name="weatherText">

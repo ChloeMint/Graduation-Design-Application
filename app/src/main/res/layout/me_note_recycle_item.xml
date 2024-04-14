@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="20dp"
+    android:layout_width="190dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/d10"
+    app:cardElevation="5dp"
+    app:contentPadding="@dimen/d10"
+    android:layout_height="240dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/noteTitle"
+            android:text="鸢尾花"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:text="note,note,note,note,note,note,note,note,note,note,note,note,note,note,note,note,note,note"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
