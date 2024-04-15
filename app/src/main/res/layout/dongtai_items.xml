@@ -43,16 +43,26 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/delete"
+            android:layout_marginRight="@dimen/d10"
+            android:layout_marginTop="@dimen/d10"
+            android:layout_toLeftOf="@+id/like"
+            android:src="@drawable/delete"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
+
+        <ImageView
+            android:layout_toLeftOf="@+id/likeNum"
             android:layout_marginTop="10dp"
             android:id="@+id/like"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_alignParentRight="true"
             android:src="@drawable/like_un" />
         <TextView
-            android:layout_margin="3dp"
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/d10"
+            android:layout_marginTop="12dp"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/like"
             android:id="@+id/likeNum"
             android:text="256"
             android:layout_width="wrap_content"

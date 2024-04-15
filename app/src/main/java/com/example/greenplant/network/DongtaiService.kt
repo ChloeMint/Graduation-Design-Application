@@ -31,4 +31,7 @@ interface DongtaiService {
     @Multipart
     @POST("/dongtai/publish")
     fun publishDongtaiText(@Part("text") text: RequestBody): Call<BaseResponseDataClass>
+
+    @DELETE("/dongtai/delete/{dongtaiId}")
+    fun deleteDongtai(@Path("dongtaiId") dongtaiId: Int): Call<BaseResponseDataClass>
 }

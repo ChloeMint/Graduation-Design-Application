@@ -1,5 +1,6 @@
 package com.example.greenplant.component.communicate
 
+import android.app.AlertDialog
 import android.content.Context
 import android.net.Uri
 import android.util.Log
@@ -18,11 +19,12 @@ import com.example.greenplant.databinding.DongtaiItemsBinding
 import com.example.greenplant.entities.Dongtai
 import com.example.greenplant.entities.PublishComment
 import com.example.greenplant.util.DefaultPreferencesUtil
+import com.example.greenplant.viewModel.DeleteDongtaiViewModel
 import com.example.greenplant.viewModel.LikeAndCancelViewModel
 import com.example.greenplant.viewModel.PublishCommentViewModel
 
 
-class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, private val model: LikeAndCancelViewModel, private val publishCommentViewModel: PublishCommentViewModel) : RecyclerView.Adapter<DongtaiAdapter.ViewHolder>() {
+class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, private val model: LikeAndCancelViewModel, private val publishCommentViewModel: PublishCommentViewModel, private val deleteDongtaiViewModel: DeleteDongtaiViewModel) : RecyclerView.Adapter<DongtaiAdapter.ViewHolder>() {
     private val currentUserId = DefaultPreferencesUtil.getUserId()
     inner class ViewHolder (val binding: DongtaiItemsBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -47,6 +49,7 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
             imageRecycleView.visibility = View.GONE
             commentRecycleView.visibility =  View.GONE
             video.visibility = View.GONE
+            delete.visibility = View.GONE
 
             time.text = dongtai.publish_time
 
@@ -70,6 +73,18 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
                 model.setDongtaiLiveData(dongtai.id)
             }
 
+            delete.setOnClickListener {
+                AlertDialog.Builder(context).apply {
+                    setTitle("警告")
+                    setMessage("您确定要删除这条动态吗？")
+                    setCancelable(false)
+                    setPositiveButton("确定"){ _, _ ->
+                        deleteDongtaiViewModel.setDongtaiIdLiveData(dongtai.id)
+                    }
+                    setNegativeButton("取消"){ _, _ ->}
+                }.show()
+            }
+
             if (dongtai.article_text != ""){
                 content.visibility = View.VISIBLE
                 content.text = dongtai.article_text
@@ -80,6 +95,10 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
 
             if (dongtai.comments.isNotEmpty()){
                 commentRecycleView.visibility = View.VISIBLE
+            }
+
+            if (dongtai.user_id == currentUserId){
+                delete.visibility = View.VISIBLE
             }
 
             try {

@@ -180,6 +180,15 @@ object Repository {
         }
     }
 
+    fun deleteDongtai(dongtaiId: Int) = fire(Dispatchers.IO){
+        val deleteDongtaiResponse = GreenPlantNetwork.deleteDongtai(dongtaiId)
+        if (deleteDongtaiResponse.code != 500){
+            Result.success(deleteDongtaiResponse)
+        }else{
+            Result.failure(RuntimeException(deleteDongtaiResponse.status))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {

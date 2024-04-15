@@ -15,6 +15,7 @@ import com.example.greenplant.databinding.FragmentCommunicateBinding
 import com.example.greenplant.entities.Dongtai
 import com.example.greenplant.fragment.BaseViewModelFragment
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.DeleteDongtaiViewModel
 import com.example.greenplant.viewModel.DongtaiViewModel
 import com.example.greenplant.viewModel.LikeAndCancelViewModel
 import com.example.greenplant.viewModel.PublishCommentViewModel
@@ -29,6 +30,9 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
     }
     private val publishCommentViewModel by lazy {
         ViewModelProvider(this)[PublishCommentViewModel::class.java]
+    }
+    private val deleteDongtaiViewModel by lazy {
+        ViewModelProvider(this)[DeleteDongtaiViewModel::class.java]
     }
 
     private  val dataList = mutableListOf<Dongtai>()
@@ -74,11 +78,22 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             }
         })
 
+        deleteDongtaiViewModel.deleteDongtaiResponseLiveData.observe(this, Observer {
+            val deleteResponse = it.getOrNull()
+            if (deleteResponse != null){
+                SuperUiUtil.newToast(requireContext(),deleteResponse.msg)
+                if (deleteResponse.code == 200){
+                    refreshData()
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        })
+
     }
 
     override fun initDatum() {
         super.initDatum()
-        adapter = DongtaiAdapter(requireContext(), dataList, likeAndCancelViewModel, publishCommentViewModel)
+        adapter = DongtaiAdapter(requireContext(), dataList, likeAndCancelViewModel, publishCommentViewModel, deleteDongtaiViewModel)
         binding.dongtaiRecycleView.layoutManager = LinearLayoutManager(requireContext(),
             RecyclerView.VERTICAL,false)
         binding.dongtaiRecycleView.adapter = adapter

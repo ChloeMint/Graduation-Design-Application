@@ -49,6 +49,8 @@ object GreenPlantNetwork {
 
     suspend fun publishDongtaiText(text: RequestBody) = dongtaiService.publishDongtaiText(text).await()
 
+    suspend fun deleteDongtai(dongtaiId: Int) = dongtaiService.deleteDongtai(dongtaiId).await()
+
     suspend fun getProvince(lat:Double,lng:Double) = weatherService.getProvince(lat, lng).await()
 
     suspend fun getRealtime(token:String, lng: Double, lat: Double) = weatherService.getRealtime(token, lng, lat).await()
