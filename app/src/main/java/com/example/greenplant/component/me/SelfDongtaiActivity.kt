@@ -3,6 +3,8 @@ package com.example.greenplant.component.me
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.CollapsibleActionView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,8 +14,10 @@ import com.example.greenplant.ServiceCreator
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivitySelfDongtaiBinding
 import com.example.greenplant.entities.Dongtai
+import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.*
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import kotlin.math.abs
 import kotlin.properties.Delegates
 
 class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() {
@@ -69,6 +73,30 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
                     // 下载error时显示的图片
                     error(R.drawable.load_failed)
                 }.into(binding.avatar)
+
+                Glide.with(binding.meBackground).load(ServiceCreator.BASE_URL + user.background).apply {
+                    // 下载error时显示的图片
+                    error(R.drawable.load_failed)
+                }.into(binding.meBackground)
+            }
+        })
+
+        likeAndCancelViewModel.likeAndCancelLiveData.observe(this, Observer {
+            val result = it.getOrNull()
+            if (result !=null){
+                refreshData()
+            }
+        })
+
+        deleteDongtaiViewModel.deleteDongtaiResponseLiveData.observe(this, Observer {
+            val deleteResponse = it.getOrNull()
+            if (deleteResponse != null){
+                SuperUiUtil.newToast(this,deleteResponse.msg)
+                if (deleteResponse.code == 200){
+                    dataList.clear()
+                    refreshData()
+                    adapter.notifyDataSetChanged()
+                }
             }
         })
     }
@@ -76,6 +104,10 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
     override fun initViews() {
         super.initViews()
         QMUIStatusBarHelper.translucent(this)
+        binding.toolbar.setNavigationIcon(R.drawable.back_white)
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 
     override fun initListener() {
@@ -88,6 +120,20 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
         binding.refreshLayout.setOnLoadMoreListener {
             page+=1
             getUserDongtaiViewModel.setUserId(userId,page)
+        }
+
+        binding.appBar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
+//            Log.d(TAG, "initListener: ${binding.appBar.totalScrollRange}")   // 另一种笨办法是打印verticalOffset
+//            if (verticalOffset == -529){
+//                binding.toolbar.setNavigationIcon(R.drawable.back)
+//            }else{
+//                binding.toolbar.setNavigationIcon(R.drawable.back_white)
+//            }
+            if (abs(verticalOffset) >= binding.appBar.totalScrollRange){
+                binding.toolbar.setNavigationIcon(R.drawable.back)
+            }else{
+                binding.toolbar.setNavigationIcon(R.drawable.back_white)
+            }
         }
     }
 
@@ -107,7 +153,14 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
         binding.refreshLayout.finishLoadMore(500,success,noMore)
     }
 
+    private fun refreshData(){
+        for (i in 1..page){
+            getUserDongtaiViewModel.setUserId(page)
+        }
+    }
+
     companion object{
+        const val TAG = "SelfDongtaiActivity"
         fun startSelfDongtaiActivity(context:Context, userId:Int){
             val intent = Intent(context,SelfDongtaiActivity::class.java)
             intent.putExtra("userId", userId)

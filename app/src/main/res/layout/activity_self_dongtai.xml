@@ -59,9 +59,11 @@
                     android:layout_height="wrap_content"/>
             </RelativeLayout>
             <androidx.appcompat.widget.Toolbar
+                android:paddingTop="@dimen/d10"
+                android:fitsSystemWindows="true"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="60dp"
                 app:layout_collapseMode="pin" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -77,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.scwang.smart.refresh.header.ClassicsHeader
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <androidx.recyclerview.widget.RecyclerView

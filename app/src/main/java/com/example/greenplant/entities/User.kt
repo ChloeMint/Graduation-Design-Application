@@ -10,5 +10,6 @@ class User (
     // 后端返回
     val avatar:String = "",
     val id : Int = 0,
-    val introduction:String=""
+    val introduction:String="",
+    val background:String=""
 )
