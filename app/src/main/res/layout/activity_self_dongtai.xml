@@ -28,6 +28,7 @@
                     android:scaleType="centerCrop" />
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_marginBottom="25dp"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImageStyle"
                     android:id="@+id/avatar"
                     android:layout_marginRight="@dimen/dialog_margin"
                     android:layout_alignParentBottom="true"
@@ -36,6 +37,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"/>
                 <TextView
+                    android:id="@+id/username"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignTop="@+id/avatar"
@@ -65,11 +67,26 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <!--  将原本的NestedScrollView替换的原理就是加上layout_behavior  -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="@dimen/dialog_margin"
-        android:id="@+id/selfDongtaiRecycleView"
+
+
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:padding="@dimen/content_padding"
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selfDongtaiRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
