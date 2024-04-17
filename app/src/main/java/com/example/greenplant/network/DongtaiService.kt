@@ -11,6 +11,9 @@ interface DongtaiService {
     @GET("/dongtai")
     fun getDongtais(@Query("page") page:Int): Call<DongtaiResponse>
 
+    @GET("/dongtai/{userId}")
+    fun getUserDongtai(@Path("userId") userId:Int, @Query("page") page: Int):Call<DongtaiResponse>
+
     @GET("/dongtai/like/{dongtaiId}")
     fun likeAndCancel(@Path("dongtaiId") dongtaiId:Int): Call<BaseResponseDataClass>
 

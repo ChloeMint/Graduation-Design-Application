@@ -189,6 +189,15 @@ object Repository {
         }
     }
 
+    fun getUserDongtai(userId:Int, page: Int) = fire(Dispatchers.IO){
+        val getUserDongtaiResponse = GreenPlantNetwork.getUserDongtai(userId,page)
+        if (getUserDongtaiResponse.code != 500){
+            Result.success(getUserDongtaiResponse.data)
+        }else{
+            Result.failure(RuntimeException(getUserDongtaiResponse.status))
+        }
+    }
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {

@@ -83,6 +83,7 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             if (deleteResponse != null){
                 SuperUiUtil.newToast(requireContext(),deleteResponse.msg)
                 if (deleteResponse.code == 200){
+                    dataList.clear()
                     refreshData()
                     adapter.notifyDataSetChanged()
                 }

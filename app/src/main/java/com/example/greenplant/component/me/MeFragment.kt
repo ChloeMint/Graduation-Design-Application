@@ -1,5 +1,6 @@
 package com.example.greenplant.component.me
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
@@ -12,6 +13,7 @@ import com.example.greenplant.component.home.HomeFragment
 import com.example.greenplant.databinding.FragmentMeBinding
 import com.example.greenplant.entities.MeItem
 import com.example.greenplant.fragment.BaseViewModelFragment
+import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.viewModel.UserInfoViewModel
 
 
@@ -49,6 +51,7 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
                 when(position){
                     0 -> {
                         Log.d(TAG, "已发布动态")
+                        SelfDongtaiActivity.startSelfDongtaiActivity(requireContext(),DefaultPreferencesUtil.getUserId())
                     }
                     1 -> {
                         Log.d(TAG, "植物笔记清单")
@@ -63,6 +66,10 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
                 when(position){
                     0->{
                         Log.d(TAG, "设置")
+                    }
+
+                    1->{
+                        Log.d(TAG, "用户反馈")
                     }
                 }
             }

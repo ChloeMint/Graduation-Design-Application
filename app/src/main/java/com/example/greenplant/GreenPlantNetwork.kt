@@ -56,6 +56,8 @@ object GreenPlantNetwork {
     suspend fun getRealtime(token:String, lng: Double, lat: Double) = weatherService.getRealtime(token, lng, lat).await()
 
     suspend fun getNearByDay(token:String, lng: Double, lat: Double, dailysteps:Int) = weatherService.getNearByDay(token, lng, lat, dailysteps).await()
+
+    suspend fun getUserDongtai(userId:Int, page: Int) = dongtaiService.getUserDongtai(userId, page).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{
