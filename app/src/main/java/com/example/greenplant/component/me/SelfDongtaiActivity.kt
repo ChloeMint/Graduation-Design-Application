@@ -50,17 +50,19 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
         getUserDongtaiViewModel.userDongtaiLiveData.observe(this, Observer {
             val dongtaiList = it.getOrNull()
             if (dongtaiList != null) {
-                if (dongtaiList.isNotEmpty()){
-                    if (page == 1){
-                        dataList.clear()
-                    }
-                    dataList.addAll(dongtaiList)
-                    adapter.notifyDataSetChanged()
-                    processRefreshAndLoadMoreStatus(true)
+                if (dongtaiList.isEmpty()){
+                    page-=1
                 }else{
-                    page -= 1
-                    processRefreshAndLoadMoreStatus(success = true, noMore = true)
+                    if (page != 1){
+                        dataList.addAll(dongtaiList)
+                    }else{
+                        dataList.clear()
+                        dataList.addAll(dongtaiList)
+                        processRefreshAndLoadMoreStatus(true, noMore = true)
+                    }
+                    adapter.notifyDataSetChanged()
                 }
+                processRefreshAndLoadMoreStatus(true, dongtaiList.isEmpty())
             }
         })
 
@@ -123,12 +125,6 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
         }
 
         binding.appBar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
-//            Log.d(TAG, "initListener: ${binding.appBar.totalScrollRange}")   // 另一种笨办法是打印verticalOffset
-//            if (verticalOffset == -529){
-//                binding.toolbar.setNavigationIcon(R.drawable.back)
-//            }else{
-//                binding.toolbar.setNavigationIcon(R.drawable.back_white)
-//            }
             if (abs(verticalOffset) >= binding.appBar.totalScrollRange){
                 binding.toolbar.setNavigationIcon(R.drawable.back)
             }else{
@@ -155,7 +151,7 @@ class SelfDongtaiActivity : BaseViewModelActivity<ActivitySelfDongtaiBinding>() 
 
     private fun refreshData(){
         for (i in 1..page){
-            getUserDongtaiViewModel.setUserId(page)
+            getUserDongtaiViewModel.setUserId(userId,page)
         }
     }
 
