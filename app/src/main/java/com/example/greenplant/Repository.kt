@@ -198,6 +198,16 @@ object Repository {
         }
     }
 
+    fun changeBackground(file: MultipartBody.Part) = fire(Dispatchers.IO){
+        val changeBackgroundResponse = GreenPlantNetwork.changeBackground(file)
+        if (changeBackgroundResponse.code != 500){
+            Result.success(changeBackgroundResponse)
+        }else{
+            Result.failure(RuntimeException(changeBackgroundResponse.status))
+        }
+    }
+
+
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {

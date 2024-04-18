@@ -37,4 +37,8 @@ interface DongtaiService {
 
     @DELETE("/dongtai/delete/{dongtaiId}")
     fun deleteDongtai(@Path("dongtaiId") dongtaiId: Int): Call<BaseResponseDataClass>
+
+    @Multipart
+    @PUT("/user/changeBackground")
+    fun changeUserBackground(@Part file: MultipartBody.Part): Call<BaseResponseDataClass>
 }
