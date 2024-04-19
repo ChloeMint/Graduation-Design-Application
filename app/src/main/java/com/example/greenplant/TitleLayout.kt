@@ -27,6 +27,10 @@ class TitleLayout(context: Context, attr:AttributeSet) : ConstraintLayout(contex
         }
     }
 
+    fun setTitle(text:String){
+        binding.titleToolbar.text = text
+    }
+
     fun setIcon(hide: Boolean){
         if (hide){
             binding.iconToolbar.visibility = View.GONE

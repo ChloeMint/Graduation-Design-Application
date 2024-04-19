@@ -16,6 +16,7 @@ object GreenPlantNetwork {
     private val baiduService = ServiceCreator.create<BaiduService>()
     private val dongtaiService = ServiceCreator.create<DongtaiService>()
     private val weatherService = ServiceCreator.create<WeatherService>()
+    private val noteService = ServiceCreator.create<NoteService>()
 
     suspend fun login(requestBody: RequestBody) = userService.login(requestBody).await()
 
@@ -60,6 +61,8 @@ object GreenPlantNetwork {
     suspend fun getUserDongtai(userId:Int, page: Int) = dongtaiService.getUserDongtai(userId, page).await()
 
     suspend fun changeBackground(file: MultipartBody.Part) = dongtaiService.changeUserBackground(file).await()
+
+    suspend fun getNotes() = noteService.getNotes().await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{
