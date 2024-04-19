@@ -116,4 +116,6 @@
     <string name="plantRecommend">绿荫推荐</string>
     <string name="self_introduction">用户简介：</string>
     <string name="plant_note">植物笔记清单</string>
+    <string name="all_note">全部笔记</string>
+    <string name="new_note">新建</string>
 </resources>
