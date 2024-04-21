@@ -64,4 +64,5 @@ dependencies {
     implementation  'io.github.scwang90:refresh-footer-classics:2.1.0'    //经典加载
     implementation 'joda-time:joda-time:2.12.2'
     implementation 'io.github.lucksiege:pictureselector:v3.11.2'
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.1'
 }

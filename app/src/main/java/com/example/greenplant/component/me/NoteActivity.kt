@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivityNoteBinding
 import com.example.greenplant.entities.Note
+import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.DeleteNoteViewModel
 import com.example.greenplant.viewModel.GetNotesViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
@@ -18,6 +20,10 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
         ViewModelProvider(this)[GetNotesViewModel::class.java]
     }
 
+    private val deleteNoteIdViewModel by lazy {
+        ViewModelProvider(this)[DeleteNoteViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getNoteViewModel.noteResponse.observe(this, Observer {
@@ -27,11 +33,23 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
                 adapter.notifyDataSetChanged()
             }
         })
+
+        deleteNoteIdViewModel.deleteResponseLiveData.observe(this, Observer {
+            val result = it.getOrNull()
+            if (result != null){
+                SuperUiUtil.newToast(this, result.msg)
+                adapter.notifyDataSetChanged()
+            }
+        })
     }
     override fun initViews() {
         super.initViews()
         QMUIStatusBarHelper.translucent(this)
-        adapter = NoteAdapter(this, noteList)
+        adapter = NoteAdapter(this, noteList, deleteNoteIdViewModel, object : DeleteNote{
+            override fun deleteNote(position: Int) {
+                noteList.removeAt(position)
+            }
+        })
         binding.noteRecycleView.adapter = adapter
         binding.noteRecycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }

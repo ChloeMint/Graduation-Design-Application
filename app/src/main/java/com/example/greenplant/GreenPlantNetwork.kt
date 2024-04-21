@@ -63,6 +63,8 @@ object GreenPlantNetwork {
     suspend fun changeBackground(file: MultipartBody.Part) = dongtaiService.changeUserBackground(file).await()
 
     suspend fun getNotes() = noteService.getNotes().await()
+
+    suspend fun deleteNote(noteId : Int) = noteService.deleteNote(noteId).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

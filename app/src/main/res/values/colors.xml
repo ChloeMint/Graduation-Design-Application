@@ -15,4 +15,5 @@
     <color name="plant_item_foreground">#F6F6F6</color>
     <color name="plant_english_name_text_color">#B5B5B5</color>
     <color name="dongtai_item_edit_background">#DDDDDD</color>
+    <color name="light_red">#66ff0000</color>
 </resources>

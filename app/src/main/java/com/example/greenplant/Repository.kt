@@ -216,7 +216,14 @@ object Repository {
         }
     }
 
-
+    fun deleteNote(noteId: Int) = fire(Dispatchers.IO){
+        val deleteResponse = GreenPlantNetwork.deleteNote(noteId)
+        if (deleteResponse.code != 500){
+            Result.success(deleteResponse)
+        }else{
+            Result.failure(RuntimeException(deleteResponse.status))
+        }
+    }
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
