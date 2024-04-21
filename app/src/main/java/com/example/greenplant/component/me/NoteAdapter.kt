@@ -1,6 +1,7 @@
 package com.example.greenplant.component.me
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,14 @@ class NoteAdapter(val context:Context, val dataList: List<Note>) : RecyclerView.
         holder.binding.apply {
             title.text = note.title
             content.text = note.content
+            delete.setOnClickListener {
+                Log.d("NoteAdapter", "delete: $position")
+            }
         }
+
+        holder.itemView.setOnClickListener {
+            Log.d("NoteAdapter", "itemView: $position")
+        }
+
     }
 }
