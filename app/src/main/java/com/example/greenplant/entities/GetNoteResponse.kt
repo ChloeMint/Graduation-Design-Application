@@ -11,3 +11,7 @@ data class Note(
     val title:String,
     val user_id:Int
 )
+
+data class GetNoteDetailResponse(
+    val data: Note
+) : BasicResponse()

@@ -1,6 +1,7 @@
 package com.example.greenplant.network
 
 import com.example.greenplant.entities.BaseResponseDataClass
+import com.example.greenplant.entities.GetNoteDetailResponse
 import com.example.greenplant.entities.GetNoteResponse
 import retrofit2.Call
 import retrofit2.http.DELETE
@@ -13,4 +14,7 @@ interface NoteService {
 
     @DELETE("/note/delete/{noteId}")
     fun deleteNote(@Path("noteId") noteId: Int): Call<BaseResponseDataClass>
+
+    @GET("/note/{noteId}")
+    fun getNoteDetail(@Path("noteId") noteId: Int) : Call<GetNoteDetailResponse>
 }

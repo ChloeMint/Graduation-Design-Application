@@ -4,20 +4,33 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivityNoteDetailBinding
 import com.example.greenplant.databinding.NoteItemBinding
+import com.example.greenplant.viewModel.GetNoteDetailViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import kotlin.properties.Delegates
 
 class NoteDetailActivity : BaseViewModelActivity<ActivityNoteDetailBinding>() {
     var noteId by Delegates.notNull<Int>()
 
+    private val getNoteDetailViewModel by lazy {
+        ViewModelProvider(this)[GetNoteDetailViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         noteId = intent.getIntExtra("noteId", 0)
 
-
+        getNoteDetailViewModel.noteDetailResponseLiveData.observe(this, Observer {
+            val result = it.getOrNull()
+            if (result != null){
+                binding.title.text = result.title
+                binding.content.text = result.content
+            }
+        })
     }
 
 
@@ -42,7 +55,7 @@ class NoteDetailActivity : BaseViewModelActivity<ActivityNoteDetailBinding>() {
 
     override fun initDatum() {
         super.initDatum()
-
+        getNoteDetailViewModel.setNoteId(noteId)
     }
 
     companion object{

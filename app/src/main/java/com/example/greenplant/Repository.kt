@@ -225,6 +225,15 @@ object Repository {
         }
     }
 
+    fun getNoteDetail(noteId: Int) = fire(Dispatchers.IO){
+        val noteResponse = GreenPlantNetwork.getNoteDetail(noteId)
+        if (noteResponse.code != 500){
+            Result.success(noteResponse.data)
+        }else{
+            Result.failure(RuntimeException(noteResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {
