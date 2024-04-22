@@ -6,12 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="20dp"
     android:elevation="5dp"
+    android:background="@drawable/me_note_module_background"
     android:layout_height="110dp">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         app:contentPadding="10dp"
-        app:cardCornerRadius="@dimen/d10"
         tools:ignore="MissingConstraints"
         android:layout_height="110dp">
         <androidx.constraintlayout.widget.ConstraintLayout

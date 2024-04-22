@@ -31,7 +31,7 @@ class NoteAdapter(val context:Context, val dataList: List<Note>, private val del
             content.text = note.content
 
             cardView.setOnClickListener {
-                Log.d("NoteAdapter", "cardView:$position")
+                NoteDetailActivity.startNoteDetail(context, note.id)
             }
 
             delete.setOnClickListener {
