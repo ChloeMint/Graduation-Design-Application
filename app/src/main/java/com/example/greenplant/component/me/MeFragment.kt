@@ -53,7 +53,6 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
                         SelfDongtaiActivity.startSelfDongtaiActivity(requireContext(),DefaultPreferencesUtil.getUserId())
                     }
                     1 -> {
-                        Log.d(TAG, "植物笔记清单")
                         val intent = Intent(requireContext(), NoteActivity::class.java)
                         startActivity(intent)
                     }

@@ -7,13 +7,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.RecyclerView
 import com.example.greenplant.MainActivity
 import com.example.greenplant.databinding.NoteItemBinding
 import com.example.greenplant.entities.Note
 import com.example.greenplant.viewModel.DeleteNoteViewModel
 
-class NoteAdapter(val context:Context, val dataList: List<Note>, private val deleteNoteViewModel: DeleteNoteViewModel, private val deleteNote: DeleteNote) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NoteAdapter(val context:Context, val dataList: List<Note>, private val deleteNoteViewModel: DeleteNoteViewModel, private val deleteNote: DeleteNote, private val launcher: ActivityResultLauncher<Intent>) : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: NoteItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,7 +32,7 @@ class NoteAdapter(val context:Context, val dataList: List<Note>, private val del
             content.text = note.content
 
             cardView.setOnClickListener {
-                NoteDetailActivity.startNoteDetail(context, note.id)
+                launcher.launch(NoteDetailActivity.startNoteDetail(context, note.id))
             }
 
             delete.setOnClickListener {

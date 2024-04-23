@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.activity.BaseViewModelActivity
@@ -46,6 +47,7 @@ class NoteDetailActivity : BaseViewModelActivity<ActivityNoteDetailBinding>() {
             setTitle("笔记详情")
         }
         binding.titleLayout.binding.back.setOnClickListener {
+            setResult(RESULT_OK)
             finish()
         }
     }
@@ -53,7 +55,8 @@ class NoteDetailActivity : BaseViewModelActivity<ActivityNoteDetailBinding>() {
     override fun initListener() {
         super.initListener()
         binding.contentTextBox.setOnClickListener {
-            EditNoteActivity.startEditNoteActivity(this, noteId, binding.title.text.toString(), binding.content.text.toString())
+            val intent = EditNoteActivity.startEditNoteActivity(this, noteId, binding.title.text.toString(), binding.content.text.toString())
+            launcher.launch(intent)
         }
 
     }
@@ -63,11 +66,17 @@ class NoteDetailActivity : BaseViewModelActivity<ActivityNoteDetailBinding>() {
         getNoteDetailViewModel.setNoteId(noteId)
     }
 
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.resultCode == RESULT_OK){
+            getNoteDetailViewModel.setNoteId(noteId)
+        }
+    }
+
     companion object{
-        fun startNoteDetail(context: Context, noteId:Int){
+        fun startNoteDetail(context: Context, noteId:Int) : Intent{
             val intent = Intent(context, NoteDetailActivity::class.java)
             intent.putExtra("noteId", noteId)
-            context.startActivity(intent)
+            return intent
         }
     }
 }

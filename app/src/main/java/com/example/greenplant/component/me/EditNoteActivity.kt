@@ -70,17 +70,18 @@ class EditNoteActivity : BaseViewModelActivity<ActivityEditNoteBinding>() {
                 SuperUiUtil.newToast(this, "标题或内容为空")
             }else{
                 editNoteViewModel.setNoteLiveData(noteId, title, content)
+                setResult(RESULT_OK)
             }
         }
     }
 
     companion object{
-        fun startEditNoteActivity(context:Context, noteId:Int, title: String, content: String){
+        fun startEditNoteActivity(context:Context, noteId:Int, title: String, content: String) : Intent{
             val intent = Intent(context, EditNoteActivity::class.java)
             intent.putExtra("noteId", noteId)
             intent.putExtra("title", title)
             intent.putExtra("content", content)
-            context.startActivity(intent)
+            return intent
         }
     }
 }

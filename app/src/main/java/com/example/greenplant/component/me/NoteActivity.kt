@@ -1,6 +1,7 @@
 package com.example.greenplant.component.me
 
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,15 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
     private val deleteNoteIdViewModel by lazy {
         ViewModelProvider(this)[DeleteNoteViewModel::class.java]
     }
+
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.resultCode == RESULT_OK){
+            noteList.clear()
+            getNoteViewModel.setFlag()
+            adapter.notifyDataSetChanged()
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +59,7 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
             override fun deleteNote(position: Int) {
                 noteList.removeAt(position)
             }
-        })
+        }, launcher)
         binding.noteRecycleView.adapter = adapter
         binding.noteRecycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
