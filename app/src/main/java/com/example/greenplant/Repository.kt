@@ -234,6 +234,15 @@ object Repository {
         }
     }
 
+    fun editNote(noteId: Int, requestBody: RequestBody) = fire(Dispatchers.IO){
+        val editResponse = GreenPlantNetwork.editNote(noteId, requestBody)
+        if (editResponse.code != 500){
+            Result.success(editResponse)
+        }else{
+            Result.failure(RuntimeException(editResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {

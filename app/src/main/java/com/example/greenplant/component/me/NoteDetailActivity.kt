@@ -53,7 +53,7 @@ class NoteDetailActivity : BaseViewModelActivity<ActivityNoteDetailBinding>() {
     override fun initListener() {
         super.initListener()
         binding.contentTextBox.setOnClickListener {
-            EditNoteActivity.startEditNoteActivity(this, binding.title.text.toString(), binding.content.text.toString())
+            EditNoteActivity.startEditNoteActivity(this, noteId, binding.title.text.toString(), binding.content.text.toString())
         }
 
     }
