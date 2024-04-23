@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
@@ -23,4 +24,7 @@ interface NoteService {
 
     @PUT("/note/editing/{noteId}")
     fun editNote(@Path("noteId") noteId: Int, @Body requestBody: RequestBody) : Call<BaseResponseDataClass>
+
+    @POST("/note/createNote")
+    fun createNote(@Body requestBody: RequestBody) : Call<BaseResponseDataClass>
 }

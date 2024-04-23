@@ -119,4 +119,5 @@
     <string name="all_note">全部笔记</string>
     <string name="new_note">新建</string>
     <string name="delete">删除</string>
+    <string name="replace_dongtai_background">重新选择动态背景图</string>
 </resources>

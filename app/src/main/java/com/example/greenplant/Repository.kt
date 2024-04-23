@@ -243,6 +243,15 @@ object Repository {
         }
     }
 
+    fun createNote(requestBody: RequestBody) = fire(Dispatchers.IO){
+        val createNoteResponse = GreenPlantNetwork.createNote(requestBody)
+        if (createNoteResponse.code != 500){
+            Result.success(createNoteResponse)
+        }else{
+            Result.failure(RuntimeException(createNoteResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {

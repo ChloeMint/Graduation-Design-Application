@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints"
+    android:orientation="vertical"
+    android:background="@color/plant_item_foreground"
+    tools:context=".component.me.CreateNoteActivity">
+    <com.example.greenplant.TitleLayout
+        android:id="@+id/titleLayout"
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <LinearLayout
+        android:padding="@dimen/content_padding"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardBox"
+            android:minHeight="360dp"
+            android:layout_width="match_parent"
+            android:elevation="5dp"
+            android:background="@drawable/me_note_module_background"
+            android:padding="@dimen/content_padding"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/plantNameBox"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="标题:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:maxLines="1"
+                android:maxLength="20"
+                android:id="@+id/title"
+                android:padding="5dp"
+                android:background="@drawable/edit_background"
+                android:layout_marginLeft="@dimen/d10"
+                app:layout_constraintTop_toTopOf="parent"
+                android:hint="请输入笔记名称(最多不超过20个字)"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toRightOf="@id/plantNameBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/divider"
+                android:background="@color/light_gray"
+                android:layout_marginTop="@dimen/dialog_margin"
+                app:layout_constraintTop_toBottomOf="@id/plantNameBox"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <EditText
+                android:id="@+id/content"
+                android:layout_marginTop="@dimen/dialog_margin"
+                android:background="@null"
+                android:textSize="15sp"
+                android:hint="请输入笔记内容"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

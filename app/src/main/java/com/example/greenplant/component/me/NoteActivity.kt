@@ -1,5 +1,6 @@
 package com.example.greenplant.component.me
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
@@ -27,9 +28,7 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         if (it.resultCode == RESULT_OK){
-            noteList.clear()
             getNoteViewModel.setFlag()
-            adapter.notifyDataSetChanged()
         }
     }
 
@@ -39,6 +38,7 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
         getNoteViewModel.noteResponse.observe(this, Observer {
             val result = it.getOrNull()
             if (result != null){
+                noteList.clear()
                 noteList.addAll(result)
                 adapter.notifyDataSetChanged()
             }
@@ -73,6 +73,10 @@ class NoteActivity : BaseViewModelActivity<ActivityNoteBinding>() {
         super.initListener()
         binding.toolBar.binding.back.setOnClickListener {
             finish()
+        }
+        binding.toolBar.binding.rightButton.setOnClickListener {
+            val intent = Intent(this, CreateNoteActivity::class.java)
+            launcher.launch(intent)
         }
     }
 }
