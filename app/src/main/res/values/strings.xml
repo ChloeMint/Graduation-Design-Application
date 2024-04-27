@@ -120,4 +120,10 @@
     <string name="new_note">新建</string>
     <string name="delete">删除</string>
     <string name="replace_dongtai_background">重新选择动态背景图</string>
+    <string name="avatar">头像</string>
+    <string name="name">名称</string>
+    <string name="introduce">用户简介</string>
+    <string name="changePhoneNumber">修改手机号</string>
+    <string name="change_password">修改密码</string>
+    <string name="logout">退出登录</string>
 </resources>

@@ -65,4 +65,29 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/plant_english_name_text_color</item>
     </style>
+
+    <style name="meSettingBox">
+        <item name="android:paddingLeft">@dimen/content_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+
+    <style name="MeSettingTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="MeSettingValueStyle">
+        <item name="android:layout_marginRight">@dimen/dialog_margin</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/meSettingValue</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

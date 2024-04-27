@@ -65,7 +65,8 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
             override fun itemOnclickListener(position: Int) {
                 when(position){
                     0->{
-                        Log.d(TAG, "设置")
+                        val intent = Intent(requireContext(), SettingActivity::class.java)
+                        startActivity(intent)
                     }
 
                     1->{

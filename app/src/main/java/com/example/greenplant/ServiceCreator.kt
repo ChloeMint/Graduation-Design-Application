@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ServiceCreator {
-    const val BASE_URL = "http://192.168.1.148:5000"
+    const val BASE_URL = "http://192.168.1.149:5000"
     const val Weather_API_TOKEN = "6w7dnhMShOheHWCy"
     private var okHttpClient = OkHttpClient.Builder()
         .connectTimeout(5,TimeUnit.SECONDS)
