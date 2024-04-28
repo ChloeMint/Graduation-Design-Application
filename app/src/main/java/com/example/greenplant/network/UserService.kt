@@ -4,11 +4,10 @@ import com.example.greenplant.entities.BaseResponseDataClass
 import com.example.greenplant.entities.LoginResponse
 import com.example.greenplant.entities.MessageResponse
 import com.example.greenplant.entities.UserInfoResponse
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface UserService {
     @POST("/login")
@@ -25,4 +24,8 @@ interface UserService {
 
     @POST("/register")
     fun register(@Body requestBody: RequestBody) : Call<BaseResponseDataClass>
+
+    @Multipart
+    @PUT("/user/changeAvatar")
+    fun changeUserAvatar(@Part image: MultipartBody.Part) : Call<BaseResponseDataClass>
 }

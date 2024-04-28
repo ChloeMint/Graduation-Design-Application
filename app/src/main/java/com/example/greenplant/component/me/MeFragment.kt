@@ -1,8 +1,11 @@
 package com.example.greenplant.component.me
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +23,12 @@ import com.example.greenplant.viewModel.UserInfoViewModel
 class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
     private val userInfoViewModel by lazy {
         ViewModelProvider(requireActivity())[UserInfoViewModel::class.java]
+    }
+
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.resultCode == RESULT_OK){
+            userInfoViewModel.setIsGettingUserInfo()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +75,7 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
                 when(position){
                     0->{
                         val intent = Intent(requireContext(), SettingActivity::class.java)
-                        startActivity(intent)
+                        launcher.launch(intent)
                     }
 
                     1->{

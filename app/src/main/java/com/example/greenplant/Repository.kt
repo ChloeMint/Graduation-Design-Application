@@ -252,6 +252,15 @@ object Repository {
         }
     }
 
+    fun changeUserAvatar(image: MultipartBody.Part) = fire(Dispatchers.IO){
+        val changeUserAvatarResponse = GreenPlantNetwork.changeUserAvatar(image)
+        if (changeUserAvatarResponse.code != 500){
+            Result.success(changeUserAvatarResponse)
+        }else{
+            Result.failure(RuntimeException(changeUserAvatarResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {

@@ -71,6 +71,8 @@ object GreenPlantNetwork {
     suspend fun editNote(noteId: Int, requestBody: RequestBody) = noteService.editNote(noteId, requestBody).await()
 
     suspend fun createNote(requestBody: RequestBody) = noteService.createNote(requestBody).await()
+
+    suspend fun changeUserAvatar(image: MultipartBody.Part) = userService.changeUserAvatar(image).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{
