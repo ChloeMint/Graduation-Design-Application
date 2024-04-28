@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,6 +34,12 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
 
     private val changeUserInfoViewModel by lazy {
         ViewModelProvider(this)[ChangeUserAvatarViewModel::class.java]
+    }
+
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.resultCode == RESULT_OK){
+            userInfoViewModel.setIsGettingUserInfo()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,7 +91,8 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
         }
 
         binding.nameBox.setOnClickListener {
-
+            val intent = ChangeUserNameActivity.startChangeUsernameActivity(this, binding.name.text.toString())
+            launcher.launch(intent)
         }
     }
 

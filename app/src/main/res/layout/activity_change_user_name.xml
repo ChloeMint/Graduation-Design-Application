@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints"
+    tools:context=".component.me.ChangeUserNameActivity">
+
+    <com.example.greenplant.TitleLayout
+        android:fitsSystemWindows="true"
+        android:id="@+id/titleLayout"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/content_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:maxLength="10"
+            android:id="@+id/username"
+            android:textSize="15sp"
+            android:hint="@string/input_your_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/advice1"
+            android:textSize="13sp"
+            android:textColor="@color/gray_text"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            android:text="@string/username_advice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="13sp"
+            android:textColor="@color/gray_text"
+            app:layout_constraintTop_toBottomOf="@id/advice1"
+            android:text="@string/username_advice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

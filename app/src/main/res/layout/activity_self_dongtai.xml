@@ -27,6 +27,7 @@
                     android:layout_height="250dp"
                     android:scaleType="centerCrop" />
                 <com.google.android.material.imageview.ShapeableImageView
+                    android:scaleType="centerCrop"
                     android:layout_marginBottom="25dp"
                     app:shapeAppearanceOverlay="@style/RoundedCornerImageStyle"
                     android:id="@+id/avatar"

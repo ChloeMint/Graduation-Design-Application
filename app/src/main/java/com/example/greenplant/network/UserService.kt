@@ -28,4 +28,7 @@ interface UserService {
     @Multipart
     @PUT("/user/changeAvatar")
     fun changeUserAvatar(@Part image: MultipartBody.Part) : Call<BaseResponseDataClass>
+
+    @PUT("/user/changeUsername")
+    fun changeUsername(@Body requestBody: RequestBody): Call<BaseResponseDataClass>
 }

@@ -261,6 +261,15 @@ object Repository {
         }
     }
 
+    fun changeUsername(requestBody: RequestBody) = fire(Dispatchers.IO){
+        val changeUsernameResponse = GreenPlantNetwork.changeUsername(requestBody)
+        if (changeUsernameResponse.code != 500){
+            Result.success(changeUsernameResponse)
+        }else{
+            Result.failure(RuntimeException(changeUsernameResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {

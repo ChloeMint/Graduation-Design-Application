@@ -126,4 +126,7 @@
     <string name="changePhoneNumber">修改手机号</string>
     <string name="change_password">修改密码</string>
     <string name="logout">退出登录</string>
+    <string name="input_your_name">请输入您的新昵称</string>
+    <string name="username_advice">一个好的昵称可以帮助大家更好的记住您</string>
+    <string name="username_advice2">(设置的用户名必须为1~10位)</string>
 </resources>
