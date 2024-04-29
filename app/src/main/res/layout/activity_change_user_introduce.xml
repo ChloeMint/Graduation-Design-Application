@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingConstraints"
+    tools:context=".component.me.ChangeUserNameActivity">
+
+    <com.example.greenplant.TitleLayout
+        android:fitsSystemWindows="true"
+        android:id="@+id/titleLayout"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="@dimen/content_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:maxLength="20"
+            android:id="@+id/introduce"
+            android:textSize="15sp"
+            android:hint="@string/input_your_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/introduce"
+            app:layout_constraintRight_toLeftOf="@id/allTextLength"
+            android:text="0"
+            android:id="@+id/textLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/introduce"
+            android:text="/20"
+            android:id="@+id/allTextLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

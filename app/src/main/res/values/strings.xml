@@ -129,4 +129,5 @@
     <string name="input_your_name">请输入您的新昵称</string>
     <string name="username_advice">一个好的昵称可以帮助大家更好的记住您</string>
     <string name="username_advice2">(设置的用户名必须为1~10位)</string>
+    <string name="input_your_introduce">展示你的独特魅力，快来设置你的个性简介吧！</string>
 </resources>

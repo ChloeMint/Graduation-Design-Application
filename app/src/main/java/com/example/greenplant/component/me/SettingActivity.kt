@@ -94,6 +94,11 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
             val intent = ChangeUserNameActivity.startChangeUsernameActivity(this, binding.name.text.toString())
             launcher.launch(intent)
         }
+
+        binding.introduceBox.setOnClickListener {
+            val intent = ChangeUserIntroduceActivity.startChangeUserIntroduceActivity(this, binding.introduce.text.toString())
+            launcher.launch(intent)
+        }
     }
 
 
