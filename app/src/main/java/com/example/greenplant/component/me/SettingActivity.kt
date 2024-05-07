@@ -1,9 +1,11 @@
 package com.example.greenplant.component.me
 
 import android.Manifest
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
@@ -16,7 +18,10 @@ import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.component.communicate.GlideEngine
 import com.example.greenplant.component.communicate.OnImagesRemovedListener
 import com.example.greenplant.component.communicate.PublishImageAdapter
+import com.example.greenplant.component.login.LoginActivity
 import com.example.greenplant.databinding.ActivitySettingBinding
+import com.example.greenplant.util.ActivityCollector
+import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.ChangeUserAvatarViewModel
 import com.example.greenplant.viewModel.UserInfoViewModel
@@ -98,6 +103,14 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
         binding.introduceBox.setOnClickListener {
             val intent = ChangeUserIntroduceActivity.startChangeUserIntroduceActivity(this, binding.introduce.text.toString())
             launcher.launch(intent)
+        }
+
+        binding.logout.setOnClickListener {
+            DefaultPreferencesUtil.deleteToken()
+            ActivityCollector.finishAll()
+            SuperUiUtil.newToast(this, "退出成功")
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

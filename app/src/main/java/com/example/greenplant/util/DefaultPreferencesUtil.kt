@@ -28,6 +28,12 @@ object DefaultPreferencesUtil {
         return defaultPreferences.getString("token", "")!!
     }
 
+    fun deleteToken(){
+        defaultPreferences.edit {
+            remove("token")
+        }
+    }
+
     fun saveBaiduToken(token: String){
         defaultPreferences.edit{
             putString("baiduToken", token)
