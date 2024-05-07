@@ -270,6 +270,15 @@ object Repository {
         }
     }
 
+    fun changeUserIntroduce(requestBody: RequestBody) = fire(Dispatchers.IO){
+        val changeUserIntroduceResponse = GreenPlantNetwork.changeUserIntroduce(requestBody)
+        if (changeUserIntroduceResponse.code != 500){
+            Result.success(changeUserIntroduceResponse)
+        }else{
+            Result.failure(RuntimeException(changeUserIntroduceResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {
