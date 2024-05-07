@@ -12,6 +12,7 @@ import com.example.greenplant.entities.User
 import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.LoginViewModel
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 
 class LoginActivity : BaseViewModelActivity<ActivityLoginBinding>() {
@@ -61,6 +62,7 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding>() {
     override fun initViews() {
         super.initViews()
         setToolBar(binding.toolBar, "Login")
+        QMUIStatusBarHelper.translucent(this)
     }
 
 

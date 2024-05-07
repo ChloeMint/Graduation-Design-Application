@@ -14,6 +14,7 @@ import com.example.greenplant.entities.User
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.ForgetPasswordViewModel
 import com.example.greenplant.viewModel.SendMessageViewModel
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class ForgetPasswordActivity : BaseViewModelActivity<ActivityForgetPasswordBinding>() {
     private val sendMessageViewModel by lazy {
@@ -27,6 +28,7 @@ class ForgetPasswordActivity : BaseViewModelActivity<ActivityForgetPasswordBindi
     override fun initViews() {
         super.initViews()
         setToolBar(binding.toolBar, "ForgetPassword")
+        QMUIStatusBarHelper.translucent(this)
     }
 
     override fun initListener() {

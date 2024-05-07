@@ -11,6 +11,7 @@ import com.example.greenplant.entities.User
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.RegisterViewModel
 import com.example.greenplant.viewModel.SendMessageViewModel
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class RegisterActivity : BaseViewModelActivity<ActivityRegisterBinding>() {
     private val sendMessageViewModel by lazy {
@@ -25,6 +26,7 @@ class RegisterActivity : BaseViewModelActivity<ActivityRegisterBinding>() {
     override fun initViews() {
         super.initViews()
         setToolBar(binding.toolBar, "Register")
+        QMUIStatusBarHelper.translucent(this)
     }
 
     override fun initListener() {

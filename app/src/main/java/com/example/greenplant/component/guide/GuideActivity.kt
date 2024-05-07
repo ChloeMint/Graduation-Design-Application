@@ -6,6 +6,7 @@ import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.component.login.LoginActivity
 import com.example.greenplant.component.register.RegisterActivity
 import com.example.greenplant.databinding.ActivityGuideBinding
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
     private lateinit var adapter:GuideAdapter
@@ -29,6 +30,7 @@ class GuideActivity : BaseViewModelActivity<ActivityGuideBinding>() {
 
     override fun initViews() {
         super.initViews()
+        QMUIStatusBarHelper.translucent(this)
     }
 
     override fun initListener() {
