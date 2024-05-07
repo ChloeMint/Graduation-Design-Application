@@ -125,9 +125,16 @@
     <string name="introduce">用户简介</string>
     <string name="changePhoneNumber">修改手机号</string>
     <string name="change_password">修改密码</string>
+    <string name="delete_phone">注销账号</string>
     <string name="logout">退出登录</string>
     <string name="input_your_name">请输入您的新昵称</string>
     <string name="username_advice">一个好的昵称可以帮助大家更好的记住您</string>
     <string name="username_advice2">(设置的用户名必须为1~10位)</string>
     <string name="input_your_introduce">展示你的独特魅力，快来设置你的个性简介吧！</string>
+    <string name="phone_title">手机号：</string>
+    <string name="input_new_phone">请输入新的手机号</string>
+    <string name="code_title">验证码:</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="get_code_for_new_phone">获取验证码</string>
+    <string name="confirm">确认</string>
 </resources>

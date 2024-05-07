@@ -5,19 +5,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.greenplant.R
 import com.example.greenplant.ServiceCreator
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.component.communicate.GlideEngine
-import com.example.greenplant.component.communicate.OnImagesRemovedListener
-import com.example.greenplant.component.communicate.PublishImageAdapter
 import com.example.greenplant.component.login.LoginActivity
 import com.example.greenplant.databinding.ActivitySettingBinding
 import com.example.greenplant.util.ActivityCollector
@@ -102,6 +97,11 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
 
         binding.introduceBox.setOnClickListener {
             val intent = ChangeUserIntroduceActivity.startChangeUserIntroduceActivity(this, binding.introduce.text.toString())
+            launcher.launch(intent)
+        }
+
+        binding.changePhoneNumberBox.setOnClickListener {
+            val intent = Intent(this, ChangePhoneNumberActivity::class.java)
             launcher.launch(intent)
         }
 

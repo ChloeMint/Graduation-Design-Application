@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingConstraints"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/plant_item_foreground"
+    tools:context=".component.me.ChangePhoneNumberActivity">
+    <com.example.greenplant.TitleLayout
+        android:id="@+id/titleLayout"
+        android:fitsSystemWindows="true"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:padding="@dimen/content_padding"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/setting_change_edit_background"
+            android:layout_marginTop="125dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:id="@+id/phoneNumberTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="@dimen/dialog_margin"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="@string/phone_title"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:maxLength="11"
+                android:textSize="15sp"
+                android:background="@null"
+                android:hint="@string/input_new_phone"
+                android:textColorHint="#BFBFBF"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginLeft="@dimen/dialog_margin"
+                app:layout_constraintLeft_toRightOf="@id/phoneNumberTitle"
+                android:layout_width="0dp"
+                app:layout_constraintStart_toEndOf="@id/phoneNumberTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="@dimen/dialog_margin"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/setting_change_edit_background"
+            android:layout_marginTop="@dimen/dialog_margin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:id="@+id/codeTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginLeft="@dimen/dialog_margin"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="@string/code_title"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@null"
+                android:hint="@string/input_code"
+                android:layout_marginRight="@dimen/dialog_margin"
+                android:id="@+id/code"
+                android:layout_marginLeft="@dimen/dialog_margin"
+                app:layout_constraintLeft_toRightOf="@id/codeTitle"
+                android:layout_width="0dp"
+                android:textColorHint="#BFBFBF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/divider"
+                app:layout_constraintStart_toEndOf="@id/codeTitle"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_marginRight="@dimen/d10"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/getCodeButton"
+                android:layout_width="1dp"
+                android:background="#EBEBEB"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/getCodeButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="@dimen/dialog_margin"
+                android:text="@string/get_code_for_new_phone"
+                android:textColor="#BFBFBF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/confirm"
+            android:text="@string/confirm"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+    </LinearLayout>
+
+</LinearLayout>
