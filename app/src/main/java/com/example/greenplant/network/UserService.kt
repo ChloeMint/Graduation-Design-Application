@@ -34,4 +34,7 @@ interface UserService {
 
     @PUT("/user/changeIntroduce")
     fun changeUserIntroduce(@Body requestBody: RequestBody) : Call<BaseResponseDataClass>
+
+    @PUT("/user/changePhoneNumber")
+    fun changeUserPhoneNumber(@Body requestBody: RequestBody) : Call<BaseResponseDataClass>
 }

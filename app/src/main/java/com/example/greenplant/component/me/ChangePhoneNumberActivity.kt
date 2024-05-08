@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import com.example.greenplant.R
 import com.example.greenplant.activity.BaseViewModelActivity
 import com.example.greenplant.databinding.ActivityChangePhoneNumberBinding
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.ChangeUserPhoneNumberViewModel
 import com.example.greenplant.viewModel.SendMessageViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
@@ -21,6 +23,9 @@ class ChangePhoneNumberActivity : BaseViewModelActivity<ActivityChangePhoneNumbe
     private var countDownRunnable: Runnable? = null
     private val sendMessageViewModel by lazy {
         ViewModelProvider(this)[SendMessageViewModel::class.java]
+    }
+    private val changeUserPhoneNumberViewModel by lazy {
+        ViewModelProvider(this)[ChangeUserPhoneNumberViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +36,16 @@ class ChangePhoneNumberActivity : BaseViewModelActivity<ActivityChangePhoneNumbe
             val result = it.getOrNull()
             if (result != null){
                 SuperUiUtil.newToast(this, result)
+            }
+        })
+
+        changeUserPhoneNumberViewModel.changeUserPhoneNumberLiveData.observe(this, Observer {
+            val result = it.getOrNull()
+            if (result != null){
+                SuperUiUtil.newToast(this, result.msg)
+                if (result.code == 200){
+                    finish()
+                }
             }
         })
     }
@@ -102,7 +117,7 @@ class ChangePhoneNumberActivity : BaseViewModelActivity<ActivityChangePhoneNumbe
             }else if (binding.code.text.toString() == ""){
                 SuperUiUtil.newToast(this, "验证码为空")
             }else{
-
+                changeUserPhoneNumberViewModel.setPhoneAndCode(binding.phoneNumber.text.toString(), binding.code.text.toString())
             }
         }
     }

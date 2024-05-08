@@ -279,6 +279,15 @@ object Repository {
         }
     }
 
+    fun changeUserPhoneNUmber(requestBody: RequestBody) = fire(Dispatchers.IO){
+        val changeUserPhoneNumberResponse = GreenPlantNetwork.changeUserPhoneNumber(requestBody)
+        if (changeUserPhoneNumberResponse.code != 500){
+            Result.success(changeUserPhoneNumberResponse)
+        }else{
+            Result.failure(RuntimeException(changeUserPhoneNumberResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {
