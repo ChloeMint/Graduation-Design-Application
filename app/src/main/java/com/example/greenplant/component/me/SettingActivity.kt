@@ -112,6 +112,11 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        binding.changePasswordBox.setOnClickListener {
+            val intent = Intent(this, ChangeUserPasswordActivity::class.java)
+            launcher.launch(intent)
+        }
     }
 
 

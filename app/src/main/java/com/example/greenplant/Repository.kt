@@ -288,6 +288,15 @@ object Repository {
         }
     }
 
+    fun changeUserPassword(requestBody: RequestBody) = fire(Dispatchers.IO){
+        val changeUserPasswordResponse = GreenPlantNetwork.changeUserPassword(requestBody)
+        if (changeUserPasswordResponse.code != 500){
+            Result.success(changeUserPasswordResponse)
+        }else{
+            Result.failure(RuntimeException(changeUserPasswordResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {
