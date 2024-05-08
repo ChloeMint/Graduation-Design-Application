@@ -46,7 +46,7 @@
                 android:textSize="15sp"
                 android:background="@null"
                 android:hint="@string/input_new_phone"
-                android:textColorHint="#BFBFBF"
+                android:textColorHint="@color/change_phone_gray"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginLeft="@dimen/dialog_margin"
@@ -86,7 +86,7 @@
                 android:layout_marginLeft="@dimen/dialog_margin"
                 app:layout_constraintLeft_toRightOf="@id/codeTitle"
                 android:layout_width="0dp"
-                android:textColorHint="#BFBFBF"
+                android:textColorHint="@color/change_phone_gray"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toStartOf="@id/divider"
                 app:layout_constraintStart_toEndOf="@id/codeTitle"
@@ -102,14 +102,15 @@
                 android:background="#EBEBEB"
                 android:layout_height="20dp"/>
 
-            <TextView
+            <Button
+                android:background="@color/ps_color_transparent"
                 android:id="@+id/getCodeButton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginRight="@dimen/dialog_margin"
                 android:text="@string/get_code_for_new_phone"
-                android:textColor="#BFBFBF"
+                android:textColor="@color/change_phone_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

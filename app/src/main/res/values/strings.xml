@@ -136,5 +136,5 @@
     <string name="code_title">验证码:</string>
     <string name="input_code">请输入验证码</string>
     <string name="get_code_for_new_phone">获取验证码</string>
-    <string name="confirm">确认</string>
+    <string name="confirm">修改</string>
 </resources>
