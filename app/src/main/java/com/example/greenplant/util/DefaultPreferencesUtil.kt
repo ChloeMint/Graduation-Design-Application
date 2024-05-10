@@ -63,4 +63,14 @@ object DefaultPreferencesUtil {
     fun getUserId():Int{
         return defaultPreferences.getInt("currentUserId", 0)
     }
+
+    fun saveUserAvatarUrl(userAvatarUrl:String){
+        defaultPreferences.edit{
+            putString("userAvatar", userAvatarUrl)
+        }
+    }
+
+    fun getUserAvatarUrl():String{
+        return defaultPreferences.getString("userAvatar","")!!
+    }
 }

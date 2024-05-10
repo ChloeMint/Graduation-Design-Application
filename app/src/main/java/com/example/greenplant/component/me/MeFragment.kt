@@ -43,7 +43,7 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
 
                 binding.username.text = user.username
                 binding.introduction.text = user.introduction
-
+                DefaultPreferencesUtil.saveUserAvatarUrl(user.avatar)
             }
         })
     }

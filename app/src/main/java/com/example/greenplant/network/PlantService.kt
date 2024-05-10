@@ -2,6 +2,7 @@ package com.example.greenplant.network
 
 import com.example.greenplant.entities.BaikeDetailResponse
 import com.example.greenplant.entities.BaikeResponse
+import com.example.greenplant.entities.ChatResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,4 +17,7 @@ interface PlantService {
 
     @GET("/baike/{plantName}")
     fun getBaikeSearch(@Path("plantName") plantName:String):Call<BaikeResponse>
+
+    @GET("/docker")
+    fun askDoctor(@Query("question") question:String):Call<ChatResponse>
 }

@@ -141,4 +141,5 @@
     <string name="hand_in_new_password">请输入新的密码</string>
     <string name="confirm_password">确认密码:</string>
     <string name="confirm_new_password">确认新密码</string>
+    <string name="question">请输入您要询问的问题</string>
 </resources>

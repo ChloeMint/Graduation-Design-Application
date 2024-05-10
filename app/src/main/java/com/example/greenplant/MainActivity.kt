@@ -45,6 +45,7 @@ class MainActivity : BaseViewModelActivity<ActivityMainBinding>() {
             val user = it.getOrNull()
             if (user != null){
                 DefaultPreferencesUtil.saveUserId(user.id)
+                DefaultPreferencesUtil.saveUserAvatarUrl(user.avatar)
             }
         })
     }
