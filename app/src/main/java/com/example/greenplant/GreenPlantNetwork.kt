@@ -81,6 +81,8 @@ object GreenPlantNetwork {
     suspend fun changeUserPhoneNumber(requestBody: RequestBody) = userService.changeUserPhoneNumber(requestBody).await()
 
     suspend fun changeUserPassword(requestBody: RequestBody) = userService.changeUserPassword(requestBody).await()
+
+    suspend fun askDoctor(question:String) = plantService.askDoctor(question).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

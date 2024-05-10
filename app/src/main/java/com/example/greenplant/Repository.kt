@@ -297,6 +297,15 @@ object Repository {
         }
     }
 
+    fun askDoctor(question:String) = fire(Dispatchers.IO){
+        val askDoctorResponse = GreenPlantNetwork.askDoctor(question)
+        if (askDoctorResponse.code == 200){
+            Result.success(askDoctorResponse)
+        }else{
+            Result.failure(RuntimeException(askDoctorResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {
