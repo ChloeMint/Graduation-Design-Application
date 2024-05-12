@@ -14,7 +14,7 @@ object Repository {
         val loginResponse = GreenPlantNetwork.login(requestBody)
         if (loginResponse.code != 500){
             val token = loginResponse.data
-            Result.success(token)
+            Result.success(loginResponse)
         }else{
             Result.failure(RuntimeException(loginResponse.msg))
         }

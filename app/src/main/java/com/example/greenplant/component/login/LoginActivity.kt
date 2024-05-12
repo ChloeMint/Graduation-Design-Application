@@ -1,6 +1,8 @@
 package com.example.greenplant.component.login
 
 
+import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.MainActivity
@@ -13,11 +15,30 @@ import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.LoginViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import com.example.greenplant.entities.LoginResponse
 
 
 class LoginActivity : BaseViewModelActivity<ActivityLoginBinding>() {
     private val viewModel by lazy {
         ViewModelProvider(this)[LoginViewModel::class.java]
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.loginResLiveData.observe(this, Observer {
+            val token = it.getOrNull()
+            if (token!=null){
+                SuperUiUtil.newToast(this, token.msg)
+                if (token.code == 200){
+                    DefaultPreferencesUtil.saveToken(token.data)
+                    startActivityAfterFinishIt(MainActivity::class.java)
+                }
+
+            }else{
+//                Toast.makeText(this, "账号或密码错误", Toast.LENGTH_SHORT).show()
+                SuperUiUtil.newToast(this, "请检查网络设置")
+            }
+        })
     }
 
 
@@ -44,17 +65,7 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding>() {
         }
 
 
-        viewModel.loginResLiveData.observe(this, Observer {
-            val token = it.getOrNull()
-            if (token!=null){
-                DefaultPreferencesUtil.saveToken(token)
-                startActivityAfterFinishIt(MainActivity::class.java)
 
-            }else{
-//                Toast.makeText(this, "账号或密码错误", Toast.LENGTH_SHORT).show()
-                SuperUiUtil.newToast(this, "账号或密码错误")
-            }
-        })
 
 
     }
