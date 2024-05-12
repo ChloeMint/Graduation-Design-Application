@@ -79,7 +79,9 @@ class MeFragment : BaseViewModelFragment<FragmentMeBinding> (){
                     }
 
                     1->{
-                        Log.d(TAG, "用户反馈")
+//                        Log.d(TAG, "用户反馈")
+                        val intent = Intent(requireContext(), SendApplicationBugActivity::class.java)
+                        startActivity(intent)
                     }
                 }
             }

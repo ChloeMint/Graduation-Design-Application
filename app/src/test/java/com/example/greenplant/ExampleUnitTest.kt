@@ -14,12 +14,14 @@ import java.time.format.DateTimeFormatter
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        val dateTimeString = "2024-04-11T00:00+08:00"
-        val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
-        val zonedDateTime = ZonedDateTime.parse(dateTimeString, formatter)
-        val localDate = zonedDateTime.toLocalDate()
-        val simpleDateString = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+//        val dateTimeString = "2024-04-11T00:00+08:00"
+//        val formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+//        val zonedDateTime = ZonedDateTime.parse(dateTimeString, formatter)
+//        val localDate = zonedDateTime.toLocalDate()
+//        val simpleDateString = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+//
+//        println(simpleDateString) // 输出: 2024-04-11
 
-        println(simpleDateString) // 输出: 2024-04-11
+
     }
 }

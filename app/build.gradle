@@ -65,4 +65,5 @@ dependencies {
     implementation 'joda-time:joda-time:2.12.2'
     implementation 'io.github.lucksiege:pictureselector:v3.11.2'
     implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.1'
+    implementation("javax.mail:mail:1.5.0-b01")
 }
