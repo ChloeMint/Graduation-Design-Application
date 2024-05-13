@@ -16,6 +16,9 @@ interface UserService {
     @GET("/user/getPersonalInfo")
     fun getUserInfo(): Call<UserInfoResponse>
 
+    @GET("/user/getPersonalInfo/{userId}")
+    fun getUserPersonalInfo(@Path("userId") userId: Int):Call<UserInfoResponse>
+
     @POST("/sendMessage")
     fun sendMessage(@Body requestBody : RequestBody): Call<MessageResponse>
 

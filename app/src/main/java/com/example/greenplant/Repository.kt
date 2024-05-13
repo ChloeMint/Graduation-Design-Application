@@ -315,6 +315,15 @@ object Repository {
         }
     }
 
+    fun getUserPersonalInfo(userId: Int) = fire(Dispatchers.IO){
+        val getUserPersonalInfoResponse = GreenPlantNetwork.getUserPersonalInfo(userId)
+        if (getUserPersonalInfoResponse.code == 200){
+            Result.success(getUserPersonalInfoResponse.data)
+        }else{
+            Result.failure(RuntimeException(getUserPersonalInfoResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {

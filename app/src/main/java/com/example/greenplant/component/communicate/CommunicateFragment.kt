@@ -120,31 +120,6 @@ class CommunicateFragment : BaseViewModelFragment<FragmentCommunicateBinding>() 
             dongtaiViewModel.setPage(page)
         }
 
-        binding.customToolbar.publish.setOnClickListener {
-            val popupMenu = PopupMenu(requireContext(),it)
-            popupMenu.menuInflater.inflate(R.menu.communication_menu,popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener {menuItem->
-                when (menuItem.itemId){
-                    R.id.textDongTai ->  {
-                        val intent = Intent(requireContext(),PublishDongtaiTextActivity::class.java)
-                        requireContext().startActivity(intent)
-                        return@setOnMenuItemClickListener true
-                    }
-                    R.id.imageDongTai -> {
-                        val intent = Intent(requireContext(),PublishDongTaiActivity::class.java)
-                        requireContext().startActivity(intent)
-                        return@setOnMenuItemClickListener true
-                    }
-                    else -> {
-                        val intent = Intent(requireContext(),PublishDongtaiWithVideoActivity::class.java)
-                        requireContext().startActivity(intent)
-                        return@setOnMenuItemClickListener true
-                    }
-                }
-            }
-            popupMenu.show()
-        }
-
         binding.customToolbar.toolBarTitle.setOnClickListener {
             binding.dongtaiRecycleView.smoothScrollToPosition(0)
         }

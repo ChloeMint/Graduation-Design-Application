@@ -2,6 +2,7 @@ package com.example.greenplant.component.communicate
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -132,6 +133,9 @@ class DongtaiAdapter(val context:Context, private var dataList: List<Dongtai>, p
                 val publishComment = PublishComment(dongtai.id, edit.text.toString())
                 publishCommentViewModel.setDongtaiIdLiveData(publishComment)
                 edit.setText("")
+            }
+            avatar.setOnClickListener {
+                UserDongTaiActivity.startUserDongTai(context, dongtai.user_id)
             }
         }
     }
