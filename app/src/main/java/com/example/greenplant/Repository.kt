@@ -306,6 +306,15 @@ object Repository {
         }
     }
 
+    fun cancelAccount() = fire(Dispatchers.IO){
+        val cancelResponse = GreenPlantNetwork.cancelAccount()
+        if (cancelResponse.code == 200){
+            Result.success(cancelResponse)
+        }else{
+            Result.failure(RuntimeException(cancelResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {

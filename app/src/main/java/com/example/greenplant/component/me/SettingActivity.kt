@@ -1,6 +1,7 @@
 package com.example.greenplant.component.me
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -18,6 +19,7 @@ import com.example.greenplant.databinding.ActivitySettingBinding
 import com.example.greenplant.util.ActivityCollector
 import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
+import com.example.greenplant.viewModel.CancelAccountViewModel
 import com.example.greenplant.viewModel.ChangeUserAvatarViewModel
 import com.example.greenplant.viewModel.UserInfoViewModel
 import com.luck.picture.lib.basic.PictureSelector
@@ -34,6 +36,10 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
 
     private val changeUserInfoViewModel by lazy {
         ViewModelProvider(this)[ChangeUserAvatarViewModel::class.java]
+    }
+
+    private val cancelAccountViewModel by lazy {
+        ViewModelProvider(this)[CancelAccountViewModel::class.java]
     }
 
     private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
@@ -63,6 +69,19 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
             val result = it.getOrNull()
             if (result != null){
                 SuperUiUtil.newToast(this, result.msg)
+            }
+        })
+
+        cancelAccountViewModel.cancelAccountLiveData.observe(this, Observer {
+            val result = it.getOrNull()
+            if (result != null){
+                SuperUiUtil.newToast(this, result.msg)
+                if (result.code == 200){
+                    DefaultPreferencesUtil.deleteToken()
+                    ActivityCollector.finishAll()
+                    val intent = Intent(this,LoginActivity::class.java)
+                    startActivity(intent)
+                }
             }
         })
     }
@@ -116,6 +135,26 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
         binding.changePasswordBox.setOnClickListener {
             val intent = Intent(this, ChangeUserPasswordActivity::class.java)
             launcher.launch(intent)
+        }
+
+        binding.deletePhoneBox.setOnClickListener {
+            AlertDialog.Builder(this).apply {
+                setTitle("警告")
+                setMessage("您确定要注销账号吗？")
+                setCancelable(false)
+                setPositiveButton("确定"){ _, _ ->
+                    AlertDialog.Builder(context).apply {
+                        setTitle("警告")
+                        setMessage("注销后会清空您的所有数据，确定要注销？您可以在7天内找回该账号。")
+                        setCancelable(false)
+                        setPositiveButton("确定"){ _, _ ->
+                            cancelAccountViewModel.setFlag(true)
+                        }
+                        setNegativeButton("取消"){ _, _ ->}
+                    }.show()
+                }
+                setNegativeButton("取消"){ _, _ ->}
+            }.show()
         }
     }
 

@@ -82,6 +82,8 @@ object GreenPlantNetwork {
 
     suspend fun changeUserPassword(requestBody: RequestBody) = userService.changeUserPassword(requestBody).await()
 
+    suspend fun cancelAccount() = userService.cancelAccount().await()
+
     suspend fun askDoctor(question:String) = plantService.askDoctor(question).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {

@@ -40,4 +40,7 @@ interface UserService {
 
     @PUT("/user/changePassword")
     fun changeUserPassword(@Body requestBody: RequestBody) : Call<BaseResponseDataClass>
+
+    @PUT("/user/cancelAccount")
+    fun cancelAccount():Call<BaseResponseDataClass>
 }
