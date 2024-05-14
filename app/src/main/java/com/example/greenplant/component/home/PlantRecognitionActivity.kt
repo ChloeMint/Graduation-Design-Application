@@ -13,6 +13,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import androidx.core.content.FileProvider
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -56,6 +57,7 @@ class PlantRecognitionActivity : BaseViewModelActivity<ActivityPlantRecognitionB
                 val result = baiduPlantRecognitionResponse[0]
                 binding.plantName.text = result.name
                 binding.truth.text = "可信度: ${result.score * 100} %"
+                binding.progress.visibility = View.GONE
             }
         })
     }
