@@ -29,6 +29,7 @@ class PlantDockerActivity : BaseViewModelActivity<ActivityPlantDockerBinding>() 
             if (result != null && result.code == 200){
                 msgList.add(Msg(result.data, Msg.RECEIVE))
                 adapter.notifyDataSetChanged()
+                binding.chatRecycleView.scrollToPosition(msgList.size - 1)
             }else{
                 SuperUiUtil.newToast(this, "请检查网络后，再次询问")
             }
