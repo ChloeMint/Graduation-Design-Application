@@ -87,6 +87,8 @@ object GreenPlantNetwork {
     suspend fun askDoctor(question:String) = plantService.askDoctor(question).await()
 
     suspend fun getUserPersonalInfo(userId: Int) = userService.getUserPersonalInfo(userId).await()
+
+    suspend fun submitBug(requestBody: RequestBody) = userService.submitBug(requestBody).await()
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine {
             enqueue(object : Callback<T>{

@@ -46,4 +46,7 @@ interface UserService {
 
     @PUT("/user/cancelAccount")
     fun cancelAccount():Call<BaseResponseDataClass>
+
+    @POST("/applicationBug")
+    fun submitBug(@Body requestBody: RequestBody) : Call<BaseResponseDataClass>
 }

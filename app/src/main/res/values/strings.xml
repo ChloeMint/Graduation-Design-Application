@@ -142,4 +142,15 @@
     <string name="confirm_password">确认密码:</string>
     <string name="confirm_new_password">确认新密码</string>
     <string name="question">请输入您要询问的问题</string>
+    <string name="selectTag">请选择标签</string>
+    <string name="function_feed_back">功能反馈</string>
+    <string name="ui">界面设计</string>
+    <string name="performance_issues">性能问题</string>
+    <string name="safe">安全问题</string>
+    <string name="experience">用户体验</string>
+    <string name="advice">建议与意见</string>
+    <string name="other">其他问题</string>
+    <string name="detail_content_title">具体建议内容</string>
+    <string name="hint_content">在这里输入内容</string>
+    <string name="limit_application_edit">/200</string>
 </resources>

@@ -31,7 +31,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginLeft="@dimen/dialog_margin"
-                android:text="请选择标签"
+                android:text="@string/selectTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -48,43 +48,43 @@
                 style="@style/ChipStyle"
                 app:chipCornerRadius="@dimen/d10"
                 android:id="@+id/chip1"
-                android:text="功能反馈" />
+                android:text="@string/function_feed_back" />
 
             <com.google.android.material.chip.Chip
                 app:chipCornerRadius="@dimen/d10"
                 style="@style/ChipStyle"
                 android:id="@+id/chip2"
-                android:text="界面设计" />
+                android:text="@string/ui" />
 
             <com.google.android.material.chip.Chip
                 app:chipCornerRadius="@dimen/d10"
                 style="@style/ChipStyle"
                 android:id="@+id/chip3"
-                android:text="性能问题" />
+                android:text="@string/performance_issues" />
 
             <com.google.android.material.chip.Chip
                 app:chipCornerRadius="@dimen/d10"
                 style="@style/ChipStyle"
                 android:id="@+id/chip4"
-                android:text="安全问题" />
+                android:text="@string/safe" />
 
             <com.google.android.material.chip.Chip
                 app:chipCornerRadius="@dimen/d10"
                 style="@style/ChipStyle"
                 android:id="@+id/chip5"
-                android:text="用户体验" />
+                android:text="@string/experience" />
 
             <com.google.android.material.chip.Chip
                 app:chipCornerRadius="@dimen/d10"
                 style="@style/ChipStyle"
                 android:id="@+id/chip6"
-                android:text="建议与意见" />
+                android:text="@string/advice" />
 
             <com.google.android.material.chip.Chip
                 app:chipCornerRadius="@dimen/d10"
                 style="@style/ChipStyle"
                 android:id="@+id/chip7"
-                android:text="其他问题" />
+                android:text="@string/other" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -101,7 +101,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_marginLeft="@dimen/dialog_margin"
-                android:text="具体建议内容"
+                android:text="@string/detail_content_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -116,7 +116,7 @@
                 android:id="@+id/edit"
                 android:layout_marginBottom="@dimen/dialog_margin"
                 android:textColorHint="@color/change_phone_gray"
-                android:hint="在这里输入内容"
+                android:hint="@string/hint_content"
                 android:maxLength="200"
                 android:textSize="15sp"
                 android:background="@null"
@@ -127,7 +127,7 @@
                 android:id="@+id/limit"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:text="/200"
+                android:text="@string/limit_application_edit"
                 android:textColor="@color/meSettingValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -145,7 +145,7 @@
         
         <Button
             android:id="@+id/commit"
-            android:text="提交"
+            android:text="@string/commit"
             android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>

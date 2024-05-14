@@ -324,6 +324,15 @@ object Repository {
         }
     }
 
+    fun submitBug(requestBody: RequestBody) = fire(Dispatchers.IO){
+        val submitBugResponse = GreenPlantNetwork.submitBug(requestBody)
+        if (submitBugResponse.code == 200){
+            Result.success(submitBugResponse)
+        }else{
+            Result.failure(RuntimeException(submitBugResponse.status))
+        }
+    }
+
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
             val result = try {
