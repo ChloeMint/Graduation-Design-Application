@@ -90,4 +90,14 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="ChipStyle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_width">98dp</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:layout_marginBottom">@dimen/d10</item>-->
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginRight">7dp</item>
+        <item name="background">@color/plant_item_background</item>
+    </style>
 </resources>
