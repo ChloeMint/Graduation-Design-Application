@@ -117,9 +117,9 @@ class WeatherFragment : BaseViewModelFragment<FragmentWeatherBinding>() {
                 // 使用latitude和longitude
 
                 val position = Position(latitude,longitude)
-//                provinceViewModel.setPositionLiveData(position)   // 根据定位获取地区，毕设展示的时候需要打开注解
-//                getRealtimeViewModel.setPositionLiveData(position)    // 获取实时天气
-//                getNearByDayViewModel.setPositionLiveData(position)   // 获取近四天的天气
+                provinceViewModel.setPositionLiveData(position)   // 根据定位获取地区，毕设展示的时候需要打开注解
+                getRealtimeViewModel.setPositionLiveData(position)    // 获取实时天气
+                getNearByDayViewModel.setPositionLiveData(position)   // 获取近四天的天气
 
                 val plantRecommend = getPlantRecommend(longitude,latitude)
                 binding.cityRecommendPlant.cityType.text = plantRecommend.cityType

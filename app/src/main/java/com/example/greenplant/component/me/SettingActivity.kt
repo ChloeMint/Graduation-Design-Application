@@ -50,6 +50,7 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setResult(RESULT_OK)
         userInfoViewModel.userInfoLiveData.observe(this, Observer {
             val result = it.getOrNull()
             if (result != null){
