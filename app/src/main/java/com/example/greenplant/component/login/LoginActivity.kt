@@ -63,17 +63,16 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding>() {
         binding.toRegister.setOnClickListener {
             startActivityAfterFinishIt(RegisterActivity::class.java)
         }
-
-
-
-
-
     }
 
     override fun initViews() {
         super.initViews()
         setToolBar(binding.toolBar, "Login")
         QMUIStatusBarHelper.translucent(this)
+
+        if (DefaultPreferencesUtil.getLogoutStatus()){
+            binding.toolBar.navigationIcon = null
+        }
     }
 
 

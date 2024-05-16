@@ -73,4 +73,14 @@ object DefaultPreferencesUtil {
     fun getUserAvatarUrl():String{
         return defaultPreferences.getString("userAvatar","")!!
     }
+
+    fun setLogoutStatus(isLogout:Boolean){
+        defaultPreferences.edit {
+            putBoolean("isLogout", isLogout)
+        }
+    }
+
+    fun getLogoutStatus(): Boolean{
+        return defaultPreferences.getBoolean("isLogout", false)
+    }
 }

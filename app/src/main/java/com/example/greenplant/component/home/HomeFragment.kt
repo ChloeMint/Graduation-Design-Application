@@ -17,6 +17,7 @@ import com.example.greenplant.R
 import com.example.greenplant.databinding.FragmentHomeBinding
 import com.example.greenplant.entities.Baike
 import com.example.greenplant.fragment.BaseViewModelFragment
+import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.viewModel.GetBaikeViewModel
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
@@ -45,6 +46,7 @@ class HomeFragment : BaseViewModelFragment<FragmentHomeBinding>() {
                 page = 1
             }
         })
+        DefaultPreferencesUtil.setLogoutStatus(false)
     }
 
     override fun initView() {

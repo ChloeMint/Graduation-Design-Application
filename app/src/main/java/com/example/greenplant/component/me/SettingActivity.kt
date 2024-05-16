@@ -129,6 +129,7 @@ class SettingActivity : BaseViewModelActivity<ActivitySettingBinding>() {
             DefaultPreferencesUtil.deleteToken()
             ActivityCollector.finishAll()
             SuperUiUtil.newToast(this, "退出成功")
+            DefaultPreferencesUtil.setLogoutStatus(true)
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

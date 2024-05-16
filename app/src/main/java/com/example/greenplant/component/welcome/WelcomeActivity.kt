@@ -17,6 +17,11 @@ import com.example.greenplant.util.SuperUiUtil
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 
 class WelcomeActivity : BaseViewModelActivity<ActivityWelcomeBinding>() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        DefaultPreferencesUtil.setLogoutStatus(false)
+    }
     override fun initViews() {
         super.initViews()
         QMUIStatusBarHelper.translucent(this)

@@ -1,13 +1,18 @@
 package com.example.greenplant.component.register
 
+import android.content.Intent
 import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.greenplant.R
 import com.example.greenplant.activity.BaseViewModelActivity
+import com.example.greenplant.component.login.LoginActivity
+import com.example.greenplant.component.welcome.WelcomeActivity
 import com.example.greenplant.databinding.ActivityRegisterBinding
 import com.example.greenplant.entities.User
+import com.example.greenplant.util.ActivityCollector
+import com.example.greenplant.util.DefaultPreferencesUtil
 import com.example.greenplant.util.SuperUiUtil
 import com.example.greenplant.viewModel.RegisterViewModel
 import com.example.greenplant.viewModel.SendMessageViewModel
@@ -27,6 +32,9 @@ class RegisterActivity : BaseViewModelActivity<ActivityRegisterBinding>() {
         super.initViews()
         setToolBar(binding.toolBar, "Register")
         QMUIStatusBarHelper.translucent(this)
+        if (DefaultPreferencesUtil.getLogoutStatus()){
+            binding.toolBar.navigationIcon = null
+        }
     }
 
     override fun initListener() {
@@ -87,6 +95,10 @@ class RegisterActivity : BaseViewModelActivity<ActivityRegisterBinding>() {
             SuperUiUtil.newToast(this, "${it.getOrNull()}")
             if (it.getOrNull() == "注册用户成功"){
                 finish()
+                if (DefaultPreferencesUtil.getLogoutStatus()){
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                }
             }
         })
     }
